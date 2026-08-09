@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bansalhealthcare.co.in/sitemap.xml
