@@ -43,7 +43,7 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                   <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-inner relative overflow-hidden">
                     <span className="absolute inset-0 flex items-center justify-center">{initials}</span>
                     <img
-                      src={`/images/${doctor.imagePlaceholder}.png`}
+                      src={`images/${doctor.imagePlaceholder}.png`}
                       alt={doctor.name}
                       className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
                       onError={(e) => {

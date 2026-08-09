@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { clinicData } from "@/data/clinic";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {

@@ -140,6 +140,6 @@ export const clinicData = {
       "Child & Physiotherapy Clinic Jaipur"
     ],
     url: "https://bansalhealthcare.co.in", // Placeholder production URL
-    ogImage: "/images/og-image.jpg"
+    ogImage: "images/og-image.jpg"
   }
 };
