@@ -40,22 +40,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs font-semibold text-white/75">
               <li>
-                <a href="#home" className="hover:text-accent transition-colors">Home</a>
+                <Link href="/#home" className="hover:text-accent transition-colors">Home</Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-accent transition-colors">About</a>
+                <Link href="/#about" className="hover:text-accent transition-colors">About</Link>
               </li>
               <li>
-                <a href="#doctors" className="hover:text-accent transition-colors">Doctors</a>
+                <Link href="/#doctors" className="hover:text-accent transition-colors">Doctors</Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-accent transition-colors">Services</a>
+                <Link href="/#services" className="hover:text-accent transition-colors">Services</Link>
               </li>
               <li>
-                <a href="#timings" className="hover:text-accent transition-colors">Timings</a>
+                <Link href="/#timings" className="hover:text-accent transition-colors">Timings</Link>
               </li>
               <li>
-                <a href="#contact" className="hover:text-accent transition-colors">Contact</a>
+                <Link href="/#contact" className="hover:text-accent transition-colors">Contact</Link>
               </li>
             </ul>
           </div>
@@ -68,9 +68,9 @@ export default function Footer() {
             <ul className="space-y-2 text-xs font-semibold text-white/75">
               {clinicData.doctors.map((doc) => (
                 <li key={doc.id}>
-                  <a href="#doctors" className="hover:text-accent transition-colors">
+                  <Link href={`/doctor/${doc.id}`} className="hover:text-accent transition-colors">
                     {doc.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

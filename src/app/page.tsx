@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import QuickInfo from "@/components/QuickInfo";
@@ -18,6 +18,20 @@ import AppointmentModal from "@/components/AppointmentModal";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [defaultDoctorId, setDefaultDoctorId] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const bookDoctor = params.get("book");
+      if (bookDoctor) {
+        setDefaultDoctorId(bookDoctor);
+        setIsModalOpen(true);
+        // Clean URL query parameter without reloading
+        const newUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, "", newUrl);
+      }
+    }
+  }, []);
 
   const handleOpenAppointment = (doctorId = "") => {
     setDefaultDoctorId(doctorId);

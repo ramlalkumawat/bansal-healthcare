@@ -1,3 +1,12 @@
+export interface DoctorDetail {
+  degrees: string[];
+  currentWork: string;
+  memberships: string[];
+  experienceYears: number;
+  aboutText: string;
+  specializations: string[];
+}
+
 export interface Doctor {
   id: string;
   name: string;
@@ -9,6 +18,7 @@ export interface Doctor {
     sunday: string[];
   };
   imagePlaceholder: string;
+  details?: DoctorDetail;
 }
 
 export interface Service {
@@ -44,7 +54,7 @@ export const clinicData = {
   doctors: [
     {
       id: "dr-piyush-bansal",
-      name: "Dr. Piyush Bansal",
+      name: "Dr. Piyush Kumar Bansal",
       qualifications: "MBBS, DCH, MIAP",
       title: "Consultant Pediatrician",
       availabilityNote: "Available for Child Healthcare & Medical Consultation",
@@ -59,12 +69,32 @@ export const clinicData = {
           "01:00 PM – 02:00 PM"
         ]
       },
-      imagePlaceholder: "dr_piyush_bansal"
+      imagePlaceholder: "dr_piyush_bansal",
+      details: {
+        degrees: [
+          "MBBS (SMS Medical College, Jaipur)",
+          "DCH (S.P. Medical College, Bikaner)"
+        ],
+        currentWork: "Currently working in J K Lon Hospital (SMS Medical College), Jaipur since July 2018 as a Consultant Pediatrician.",
+        memberships: [
+          "Life Member - Indian Academy of Pediatrics (IAP)"
+        ],
+        experienceYears: 11,
+        aboutText: "Dr. Piyush Kumar Bansal is a highly accomplished Consultant Pediatrician with 11 years of professional experience in pediatric care. He is dedicated to providing comprehensive and compassionate medical care for infants, children, and adolescents. Currently serving as a Consultant Pediatrician at J K Lon Hospital (SMS Medical College), Jaipur, he is recognized for his expert clinical diagnostics and patient-first approach to child health.",
+        specializations: [
+          "Newborn & Infant Care",
+          "Child Growth & Development Monitoring",
+          "Immunization & Vaccination",
+          "Pediatric Asthma & Allergy Care",
+          "Childhood Nutrition & Diet Advice",
+          "Common Childhood Infection Treatment"
+        ]
+      }
     },
     {
       id: "dr-mahima-bansal",
       name: "Dr. Mahima Bansal",
-      qualifications: "Dr Bansal's Child & Physiotherapy Clinic",
+      qualifications: "BPT, MPT",
       title: "Consultant Physiotherapist",
       availabilityNote: "Available for Physiotherapy & Pediatric Care",
       schedule: {
@@ -76,7 +106,27 @@ export const clinicData = {
           "11:00 AM – 01:00 PM"
         ]
       },
-      imagePlaceholder: "dr_mahima_bansal"
+      imagePlaceholder: "dr_mahima_bansal",
+      details: {
+        degrees: [
+          "BPT (Bachelor of Physiotherapy)",
+          "MPT (Master of Physiotherapy)"
+        ],
+        currentWork: "Consultant Physiotherapist at Dr Bansal's Child & Physiotherapy Clinic, specializing in pediatric rehabilitation and pain management.",
+        memberships: [
+          "Active Member - Indian Association of Physiotherapists (IAP)"
+        ],
+        experienceYears: 8,
+        aboutText: "Dr. Mahima Bansal is a skilled Consultant Physiotherapist with a warm and patient-focused treatment approach. She specializes in designing personalized physical therapy and rehabilitation programs for children and adults. With 8 years of experience, she helps patients restore strength, mobility, and function following injuries, surgeries, or neuromusculoskeletal disorders.",
+        specializations: [
+          "Pediatric Physical Therapy",
+          "Post-Surgical Rehabilitation",
+          "Orthopedic Physical Therapy",
+          "Neurological Rehabilitation",
+          "Joint Pain & Arthritis Management",
+          "Posture & Spinal Care Correction"
+        ]
+      }
     }
   ] as Doctor[],
   services: [

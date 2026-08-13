@@ -27,12 +27,12 @@ export default function Navbar({ onOpenAppointment }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Doctors", href: "#doctors" },
-    { name: "Services", href: "#services" },
-    { name: "Timings", href: "#timings" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#home" },
+    { name: "About", href: "/#about" },
+    { name: "Doctors", href: "/#doctors" },
+    { name: "Services", href: "/#services" },
+    { name: "Timings", href: "/#timings" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -46,7 +46,7 @@ export default function Navbar({ onOpenAppointment }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo Brand */}
-          <Link href="#home" className="flex flex-col">
+          <Link href="/#home" className="flex flex-col">
             <span className="text-xl font-bold tracking-tight text-primary">
               {clinicData.brandName.toUpperCase()}
             </span>
@@ -58,13 +58,13 @@ export default function Navbar({ onOpenAppointment }: NavbarProps) {
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-sm font-semibold text-text-dark hover:text-accent transition-colors duration-200"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -109,14 +109,14 @@ export default function Navbar({ onOpenAppointment }: NavbarProps) {
       >
         <div className="px-4 pt-4 pb-6 space-y-3">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
               className="block px-3 py-2 rounded-lg text-base font-semibold text-text-dark hover:bg-bg-light hover:text-accent transition-all duration-200"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div className="border-t border-border-light pt-4 mt-4 flex flex-col space-y-3">
             {clinicData.phone && (

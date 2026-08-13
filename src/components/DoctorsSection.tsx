@@ -1,6 +1,7 @@
 "use client";
 
-import { Calendar, Stethoscope, Activity, Sparkles, Check } from "lucide-react";
+import { Calendar, Stethoscope, Activity, Sparkles, Check, User } from "lucide-react";
+import Link from "next/link";
 import { clinicData } from "@/data/clinic";
 
 interface DoctorsSectionProps {
@@ -103,14 +104,23 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                     </div>
                   </div>
 
-                  {/* Booking CTA Button */}
-                  <button
-                    onClick={() => onOpenAppointment(doctor.id)}
-                    className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl border border-primary text-primary hover:bg-primary hover:text-white font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
-                  >
-                    <Calendar className="w-3.5 h-3.5 mr-2" />
-                    Book Session with {doctor.name.split(" ").slice(-1)[0]}
-                  </button>
+                  {/* Action Buttons Grid */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <Link
+                      href={`/doctor/${doctor.id}`}
+                      className="inline-flex items-center justify-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary/5 font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
+                    >
+                      <User className="w-3.5 h-3.5 mr-1.5 shrink-0" />
+                      View Profile
+                    </Link>
+                    <button
+                      onClick={() => onOpenAppointment(doctor.id)}
+                      className="inline-flex items-center justify-center py-2.5 px-3 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
+                    >
+                      <Calendar className="w-3.5 h-3.5 mr-1.5 shrink-0" />
+                      Book Slot
+                    </button>
+                  </div>
                 </div>
               </div>
             );
