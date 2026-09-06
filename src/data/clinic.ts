@@ -41,15 +41,15 @@ export const clinicData = {
   whatsapp: "+919214678687",
   address: {
     street: "247, Kusum Vihar, Gali No. 5",
-    landmark: "SKIT Road, Near 7 No. Chauraha",
+    landmark: "SKIT Road",
     area: "Jagatpura",
     city: "Jaipur",
     state: "Rajasthan",
     country: "India",
-    fullAddress: "247, Kusum Vihar, Gali No. 5, SKIT Road, Near 7 No. Chauraha, Jagatpura, Jaipur, Rajasthan, India"
+    fullAddress: "247, Kusum Vihar, Gali No. 5, SKIT Road, Jagatpura, Jaipur, Rajasthan, India"
   },
-  mapUrl: "https://www.google.com/maps/search/?api=1&query=Dr+Bansals+Child+Physiotherapy+Clinic+Jagatpura+Jaipur",
-  directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=247,+Kusum+Vihar,+Gali+No.+5,+SKIT+Road,+Near+7+No.+Chauraha,+Jagatpura,+Jaipur",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=247,+Kusum+Vihar,+Gali+No.+5,+SKIT+Road,+Jagatpura,+Jaipur",
+  directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=247,+Kusum+Vihar,+Gali+No.+5,+SKIT+Road,+Jagatpura,+Jaipur",
   timingsNote: "Please confirm availability before visiting.",
   doctors: [
     {
@@ -92,8 +92,8 @@ export const clinicData = {
       }
     },
     {
-      id: "dr-mahima-bansal",
-      name: "Dr. Mahima Bansal",
+      id: "dr-manisha-bansal",
+      name: "Dr. Manisha Bansal",
       qualifications: "BPT, MPT",
       title: "Consultant Physiotherapist",
       availabilityNote: "Available for Physiotherapy & Pediatric Care",
@@ -106,7 +106,7 @@ export const clinicData = {
           "11:00 AM – 01:00 PM"
         ]
       },
-      imagePlaceholder: "dr_mahima_bansal",
+      imagePlaceholder: "dr_manisha_bansal",
       details: {
         degrees: [
           "BPT (Bachelor of Physiotherapy)",
@@ -117,7 +117,7 @@ export const clinicData = {
           "Active Member - Indian Association of Physiotherapists (IAP)"
         ],
         experienceYears: 8,
-        aboutText: "Dr. Mahima Bansal is a skilled Consultant Physiotherapist with a warm and patient-focused treatment approach. She specializes in designing personalized physical therapy and rehabilitation programs for children and adults. With 8 years of experience, she helps patients restore strength, mobility, and function following injuries, surgeries, or neuromusculoskeletal disorders.",
+        aboutText: "Dr. Manisha Bansal is a skilled Consultant Physiotherapist with a warm and patient-focused treatment approach. She specializes in designing personalized physical therapy and rehabilitation programs for children and adults. With 8 years of experience, she helps patients restore strength, mobility, and function following injuries, surgeries, or neuromusculoskeletal disorders.",
         specializations: [
           "Pediatric Physical Therapy",
           "Post-Surgical Rehabilitation",
@@ -153,7 +153,7 @@ export const clinicData = {
     {
       id: "faq-location",
       question: "Where is Dr Bansal's Child & Physiotherapy Clinic located?",
-      answer: "The clinic is located at 247, Kusum Vihar, Gali No. 5, SKIT Road, Near 7 No. Chauraha, Jagatpura, Jaipur, Rajasthan, India."
+      answer: "The clinic is located at 247, Kusum Vihar, Gali No. 5, SKIT Road, Jagatpura, Jaipur, Rajasthan, India."
     },
     {
       id: "faq-timings-dr-piyush",
@@ -163,12 +163,12 @@ export const clinicData = {
     {
       id: "faq-timings-clinic",
       question: "What are the clinic timings?",
-      answer: "The general clinic timings (Dr. Mahima Bansal / Physiotherapy) are: Monday to Saturday: 9:00 AM – 1:00 PM and 4:00 PM – 8:00 PM. Sunday: 11:00 AM – 1:00 PM."
+      answer: "The general clinic timings (Dr. Manisha Bansal / Physiotherapy) are: Monday to Saturday: 9:00 AM – 1:00 PM and 4:00 PM – 8:00 PM. Sunday: 11:00 AM – 1:00 PM."
     },
     {
       id: "faq-doctors",
       question: "Who are the doctors at the clinic?",
-      answer: "The clinic features Dr. Piyush Bansal (MBBS, DCH, MIAP) specializing in child healthcare, and Dr. Mahima Bansal providing physiotherapy and child care."
+      answer: "The clinic features Dr. Piyush Bansal (MBBS, DCH, MIAP) specializing in child healthcare, and Dr. Manisha Bansal providing physiotherapy and child care."
     },
     {
       id: "faq-confirm",
@@ -185,7 +185,7 @@ export const clinicData = {
       "Pediatric consultation Jagatpura",
       "Physiotherapy clinic Jagatpura Jaipur",
       "Dr Piyush Bansal Jaipur",
-      "Dr Mahima Bansal Jaipur",
+      "Dr Manisha Bansal Jaipur",
       "Bansal Healthcare Jaipur",
       "Child & Physiotherapy Clinic Jaipur"
     ],

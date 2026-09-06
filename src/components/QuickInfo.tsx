@@ -11,7 +11,7 @@ export default function QuickInfo() {
       value: "Jagatpura, Jaipur",
       icon: MapPin,
       colorClass: "text-accent bg-accent/10",
-      description: "247, Kusum Vihar, Gali 5"
+      description: `${clinicData.address.street}, ${clinicData.address.landmark}`
     },
     {
       id: "pediatrician",

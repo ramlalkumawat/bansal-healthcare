@@ -38,27 +38,33 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                 key={doctor.id}
                 className="bg-white rounded-3xl overflow-hidden border border-border-light shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col text-left"
               >
-                {/* Visual Header / Avatar Area */}
-                <div className="p-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-white flex items-center space-x-5 border-b border-border-light">
-                  {/* Doctor Portrait Image with Initials Fallback */}
-                  <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-inner relative overflow-hidden">
-                    <span className="absolute inset-0 flex items-center justify-center">{initials}</span>
-                    <img
-                      src={`images/${doctor.imagePlaceholder}.png`}
-                      alt={doctor.name}
-                      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-                      onError={(e) => {
-                        e.currentTarget.style.opacity = "0";
-                      }}
-                    />
-                    <div className="absolute bottom-0 right-0 p-1 bg-accent text-white rounded-tl-lg shadow z-10">
-                      <SpecialistIcon className="w-3.5 h-3.5" />
-                    </div>
+                {/* Visual Top Showcase Image Area (2x Larger Full Portrait) */}
+                <div className="relative w-full h-80 sm:h-96 bg-primary/10 overflow-hidden group">
+                  <span className="absolute inset-0 flex items-center justify-center font-bold text-6xl text-primary/40">{initials}</span>
+                  <img
+                    src={`/images/${doctor.imagePlaceholder}.png`}
+                    alt={doctor.name}
+                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 z-10"
+                    onError={(e) => {
+                      e.currentTarget.style.opacity = "0";
+                    }}
+                  />
+                  {/* Gradient Overlay for modern visual hierarchy */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071F26]/90 via-[#071F26]/20 to-transparent z-20" />
+                  
+                  {/* Floating Specialty Icon */}
+                  <div className="absolute top-4 right-4 p-2.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg z-30">
+                    <SpecialistIcon className="w-5 h-5 text-accent" />
                   </div>
-                  <div className="space-y-1">
-                    <h3 className="text-lg sm:text-xl font-bold text-primary">{doctor.name}</h3>
-                    <p className="text-xs font-bold text-secondary uppercase tracking-wide">
-                      {doctor.title}
+                  
+                  {/* Overlay Title & Doctor Name */}
+                  <div className="absolute bottom-5 left-5 right-5 text-white z-30 space-y-1.5">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-accent text-white uppercase tracking-wider shadow-sm">
+                      {doctor.details?.experienceYears || "Specialist"} Years Clinical Experience
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight drop-shadow-md">{doctor.name}</h3>
+                    <p className="text-xs sm:text-sm font-semibold text-emerald-300 uppercase tracking-wide">
+                      {doctor.title} • {doctor.qualifications}
                     </p>
                   </div>
                 </div>

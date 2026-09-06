@@ -105,8 +105,8 @@ export default function RootLayout({
       },
       {
         "@type": "Physician",
-        "@id": `${clinicData.seo.url}/#dr-mahima-bansal`,
-        "name": "Dr. Mahima Bansal",
+        "@id": `${clinicData.seo.url}/#dr-manisha-bansal`,
+        "name": "Dr. Manisha Bansal",
         "medicalSpecialty": "Physiotherapy",
         "worksFor": {
           "@type": "MedicalClinic",

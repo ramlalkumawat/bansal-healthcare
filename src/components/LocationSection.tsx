@@ -43,55 +43,55 @@ export default function LocationSection() {
               </div>
             </div>
 
-            {/* Map Placeholder Headline */}
-            <div className="text-center max-w-md space-y-4">
-              <h3 className="text-lg font-bold text-primary">View Clinic Location</h3>
-              <p className="text-xs text-text-muted leading-relaxed">
-                247, Kusum Vihar, Gali No. 5, SKIT Road, Near 7 No. Chauraha, Jagatpura, Jaipur, Rajasthan, India
-              </p>
-              
-              <div className="pt-2">
-                <a
-                  href={clinicData.mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary hover:bg-secondary text-white text-xs font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
-                >
-                  <ExternalLink className="w-3.5 h-3.5 mr-2 text-accent" />
-                  Open in Google Maps
-                </a>
+              {/* Map Placeholder Headline */}
+              <div className="text-center max-w-md space-y-4">
+                <h3 className="text-lg font-bold text-primary">View Clinic Location</h3>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  {clinicData.address.fullAddress}
+                </p>
+                
+                <div className="pt-2">
+                  <a
+                    href={clinicData.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary hover:bg-secondary text-white text-xs font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 mr-2 text-accent" />
+                    Open in Google Maps
+                  </a>
+                </div>
+              </div>
+
+              {/* Map Scale indicator */}
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-border-light text-[10px] font-bold text-text-muted flex items-center space-x-1.5">
+                <Compass className="w-3.5 h-3.5 text-secondary" />
+                <span>Jaipur, Jagatpura Zone</span>
               </div>
             </div>
 
-            {/* Map Scale indicator */}
-            <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-border-light text-[10px] font-bold text-text-muted flex items-center space-x-1.5">
-              <Compass className="w-3.5 h-3.5 text-secondary" />
-              <span>Jaipur, Jagatpura Zone</span>
-            </div>
-          </div>
+            {/* Location details card (4 columns on desktop) */}
+            <div className="lg:col-span-4 bg-white border border-border-light rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-sm">
+              <div className="space-y-6">
+                <div>
+                  <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1">
+                    Full Address
+                  </span>
+                  <p className="text-sm font-semibold text-text-dark leading-relaxed">
+                    {clinicData.address.street}, <br />
+                    {clinicData.address.landmark}, <br />
+                    {clinicData.address.area}, {clinicData.address.city}, {clinicData.address.state}
+                  </p>
+                </div>
 
-          {/* Location details card (4 columns on desktop) */}
-          <div className="lg:col-span-4 bg-white border border-border-light rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-sm">
-            <div className="space-y-6">
-              <div>
-                <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1">
-                  Full Address
-                </span>
-                <p className="text-sm font-semibold text-text-dark leading-relaxed">
-                  247, Kusum Vihar, Gali No. 5, <br />
-                  SKIT Road, Near 7 No. Chauraha, <br />
-                  Jagatpura, Jaipur, Rajasthan
-                </p>
-              </div>
-
-              <div>
-                <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1">
-                  Key Landmark
-                </span>
-                <p className="text-xs font-medium text-text-muted leading-relaxed">
-                  Conveniently situated near the 7 No. Chauraha junction and SKIT Road, making it simple to find for parents and physiotherapy patients.
-                </p>
-              </div>
+                <div>
+                  <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1">
+                    Key Landmark
+                  </span>
+                  <p className="text-xs font-medium text-text-muted leading-relaxed">
+                    Conveniently situated on SKIT Road (Gali No. 5, Kusum Vihar), Jagatpura, making it simple to find for parents and physiotherapy patients.
+                  </p>
+                </div>
 
               <div className="border-t border-border-light pt-6">
                 <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-2">

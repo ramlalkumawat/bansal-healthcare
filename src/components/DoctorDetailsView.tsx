@@ -88,28 +88,30 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
             <div className="p-6 sm:p-10 bg-gradient-to-br from-primary/5 via-secondary/5 to-white flex flex-col md:flex-row md:items-center justify-between gap-6">
               
               {/* Doctor Avatar + Identity */}
-              <div className="flex items-center space-x-5 sm:space-x-7">
-                <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl bg-primary text-white flex items-center justify-center font-bold text-2xl sm:text-4xl shrink-0 shadow-md relative overflow-hidden">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl bg-primary text-white flex items-center justify-center font-bold text-5xl sm:text-7xl shrink-0 shadow-2xl relative overflow-hidden ring-4 sm:ring-8 ring-white">
                   <span className="absolute inset-0 flex items-center justify-center z-0">{initials}</span>
                   <img
                     src={`/images/${doctor.imagePlaceholder}.png`}
                     alt={doctor.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 z-10"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105 z-10"
                     onError={(e) => {
                       e.currentTarget.style.opacity = "0";
                     }}
                   />
-                  <div className="absolute bottom-0 right-0 p-1.5 bg-accent text-white rounded-tl-xl shadow z-20">
-                    <SpecialistIcon className="w-4 h-4" />
+                  <div className="absolute bottom-0 right-0 p-2.5 sm:p-3 bg-accent text-white rounded-tl-2xl shadow-xl z-20">
+                    <SpecialistIcon className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
                 </div>
                 
-                <div className="space-y-2 text-left">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-accent/15 text-accent uppercase tracking-wide">
-                    {doctor.details?.experienceYears} Years Experience
+                <div className="space-y-3 text-center md:text-left flex-1 pt-2">
+                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-accent/15 text-accent uppercase tracking-wider">
+                    {doctor.details?.experienceYears} Years Clinical Experience
                   </span>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">{doctor.name}</h1>
-                  <p className="text-sm sm:text-base font-bold text-secondary uppercase tracking-wider">{doctor.title}</p>
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">{doctor.name}</h1>
+                  <p className="text-base sm:text-xl font-bold text-secondary uppercase tracking-wider">{doctor.title}</p>
+                  <p className="text-sm sm:text-base font-semibold text-text-muted">{doctor.qualifications}</p>
+                  <p className="text-xs sm:text-sm text-text-muted/90 pt-1 font-medium">{doctor.availabilityNote}</p>
                 </div>
               </div>
 
