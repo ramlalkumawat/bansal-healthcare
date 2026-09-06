@@ -94,7 +94,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                   <img
                     src={`/images/${doctor.imagePlaceholder}.png`}
                     alt={doctor.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105 z-10"
+                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105 z-10"
                     onError={(e) => {
                       e.currentTarget.style.opacity = "0";
                     }}
