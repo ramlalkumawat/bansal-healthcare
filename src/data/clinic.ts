@@ -13,6 +13,8 @@ export interface Doctor {
   qualifications: string;
   title: string;
   availabilityNote: string;
+  phone?: string;
+  whatsapp?: string;
   schedule: {
     weekdays: string[];
     sunday: string[];
@@ -58,6 +60,8 @@ export const clinicData = {
       qualifications: "MBBS, DCH, MIAP",
       title: "Consultant Pediatrician",
       availabilityNote: "Available for Child Healthcare & Medical Consultation",
+      phone: "+919214678687",
+      whatsapp: "+919214678687",
       schedule: {
         weekdays: [
           "07:00 AM – 08:00 AM",
@@ -97,6 +101,8 @@ export const clinicData = {
       qualifications: "BPT, MPT",
       title: "Consultant Physiotherapist",
       availabilityNote: "Available for Physiotherapy & Pediatric Care",
+      phone: "+919214678687",
+      whatsapp: "+919214678687",
       schedule: {
         weekdays: [
           "09:00 AM – 01:00 PM",

@@ -105,8 +105,10 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
   const isPiyush = doctor.id === "dr-piyush-bansal";
   const SpecialistIcon = isPiyush ? Stethoscope : Activity;
   const initials = isPiyush ? "PB" : "MB";
-  const cleanedPhone = clinicData.whatsapp.replace(/[^0-9]/g, "");
-  const whatsappUrl = `https://wa.me/${cleanedPhone}?text=Hello%20Dr%20Bansal's%20Clinic,%20I'd%20like%20to%20inquire%20about%20booking%20an%20appointment%20with%20${encodeURIComponent(doctor.name)}.`;
+  const doctorWhatsapp = doctor.whatsapp || clinicData.whatsapp;
+  const doctorPhone = doctor.phone || clinicData.phone;
+  const cleanedPhone = doctorWhatsapp.replace(/[^0-9]/g, "");
+  const whatsappUrl = `https://wa.me/${cleanedPhone}?text=Hello%20Dr.%20${encodeURIComponent(doctor.name.split(" ").slice(-1)[0])},%20I'd%20like%20to%20inquire%20about%20booking%20an%20appointment.`;
 
   return (
     <>
@@ -159,7 +161,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
               {/* Quick Contact CTAs in Hero */}
               <div className="flex flex-row md:flex-col lg:flex-row gap-3 mt-4 md:mt-0 shrink-0">
                 <a
-                  href={`tel:${clinicData.phone}`}
+                  href={`tel:${doctorPhone}`}
                   className="flex-1 md:flex-initial inline-flex items-center justify-center px-5 py-3 rounded-xl border border-border-light text-text-dark bg-white hover:bg-bg-light font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
                 >
                   <Phone className="w-4 h-4 mr-2 text-secondary" />

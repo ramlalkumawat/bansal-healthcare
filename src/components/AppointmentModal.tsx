@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { X, Calendar, User, Phone, MessageSquare, Clock, ShieldCheck, RefreshCw } from "lucide-react";
+import { X, Calendar, User, Phone, MessageSquare, Clock, ShieldCheck, RefreshCw, Send, CheckCircle2 } from "lucide-react";
 import { clinicData } from "@/data/clinic";
 import { submitAppointment, AppointmentData } from "@/utils/api";
+import { generateAppointmentWhatsAppUrl, WhatsAppAppointmentResult } from "@/utils/whatsapp";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface AppointmentModalProps {
@@ -28,6 +29,7 @@ export default function AppointmentModal({
 
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [waDetails, setWaDetails] = useState<WhatsAppAppointmentResult | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [generalError, setGeneralError] = useState("");
 
@@ -38,6 +40,7 @@ export default function AppointmentModal({
     if (isOpen) {
       setLoadTime(Date.now());
       setSuccess(false);
+      setWaDetails(null);
       setErrors({});
       setGeneralError("");
       // Reset inputs if it is reopened
@@ -89,7 +92,19 @@ export default function AppointmentModal({
     try {
       const response = await submitAppointment(formData);
       if (response.success) {
+        // Generate doctor-specific WhatsApp URL with all form details
+        const generatedWa = generateAppointmentWhatsAppUrl(formData);
+        setWaDetails(generatedWa);
         setSuccess(true);
+
+        // Automatically open WhatsApp in a new tab/app window
+        try {
+          if (typeof window !== "undefined") {
+            window.open(generatedWa.whatsappUrl, "_blank", "noopener,noreferrer");
+          }
+        } catch {
+          // If popup is blocked by browser, the user can click the button on the success screen
+        }
       } else {
         if (response.errors) {
           setErrors(response.errors);
@@ -104,6 +119,7 @@ export default function AppointmentModal({
     }
   };
 
+  const selectedDoctorObj = clinicData.doctors.find((d) => d.id === doctor);
   const todayStr = new Date().toISOString().split("T")[0];
 
   return (
@@ -247,6 +263,18 @@ export default function AppointmentModal({
                       {errors.doctor && (
                         <p className="text-xs text-red-500 mt-1 font-semibold">{errors.doctor}</p>
                       )}
+
+                      {/* Doctor Routing Notification Pill */}
+                      {selectedDoctorObj && (
+                        <div className="mt-2 p-2.5 bg-emerald-50 border border-emerald-200/80 rounded-xl flex items-center justify-between text-xs text-emerald-800">
+                          <div className="flex items-center space-x-2">
+                            <MessageSquare className="w-4 h-4 text-emerald-600 shrink-0" />
+                            <span className="font-medium">
+                              Details will go to: <strong className="font-bold">{selectedDoctorObj.name}</strong> ({selectedDoctorObj.whatsapp || clinicData.whatsapp})
+                            </span>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Date and Time Slot Grid */}
@@ -313,37 +341,90 @@ export default function AppointmentModal({
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-full inline-flex items-center justify-center py-3 px-4 rounded-xl bg-accent text-white font-bold text-sm shadow-md hover:shadow-lg hover:bg-secondary cursor-pointer transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-xl bg-accent text-white font-bold text-sm shadow-md hover:shadow-lg hover:bg-secondary cursor-pointer transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isLoading ? (
                         <>
                           <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                          Scheduling...
+                          Scheduling & Preparing WhatsApp...
                         </>
                       ) : (
-                        "Request Appointment Slot"
+                        <>
+                          <MessageSquare className="w-4 h-4 mr-2" />
+                          Request & Send to Doctor's WhatsApp
+                        </>
                       )}
                     </button>
 
                     <p className="text-[10px] text-text-muted text-center leading-normal">
-                      By submitting this form, you request a booking slot. A clinic representative will contact you via phone call or message to confirm the final time slot.
+                      Form submit karte hi details chuninda doctor ke WhatsApp par automatically bhej di jayengi confirmation ke liye.
                     </p>
                   </form>
                 </>
               ) : (
-                <div className="py-8 text-center flex flex-col items-center">
-                  <div className="w-16 h-16 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mb-4 border border-emerald-100">
-                    <ShieldCheck className="w-8 h-8" />
+                <div className="py-4 text-center flex flex-col items-center">
+                  <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mb-3 border border-emerald-100 shadow-sm">
+                    <CheckCircle2 className="w-9 h-9" />
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-primary mb-2">
-                    Request Received!
+
+                  <h2 className="text-xl sm:text-2xl font-extrabold text-primary mb-1">
+                    Appointment Request Ready!
                   </h2>
-                  <p className="text-sm text-text-muted max-w-sm mx-auto mb-6">
-                    We have successfully logged your appointment request details. Dr Bansal's clinic team will contact you shortly at <span className="font-bold text-text-dark">{phoneNumber}</span> to confirm your session.
+
+                  <p className="text-xs text-text-muted max-w-sm mx-auto mb-4">
+                    Aapki appointment details <span className="font-bold text-text-dark">{waDetails?.doctorName}</span> ke WhatsApp ke liye prepare ho chuki hain.
                   </p>
+
+                  {/* Summary Box */}
+                  <div className="w-full bg-bg-light border border-border-light rounded-2xl p-4 text-left space-y-2 mb-4 text-xs">
+                    <div className="flex justify-between items-center pb-2 border-b border-border-light">
+                      <span className="text-text-muted font-medium">Selected Doctor:</span>
+                      <span className="font-bold text-primary">{waDetails?.doctorName}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-text-muted font-medium">Patient Name:</span>
+                      <span className="font-semibold text-text-dark">{patientName}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-text-muted font-medium">Phone Number:</span>
+                      <span className="font-semibold text-text-dark">{phoneNumber}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-text-muted font-medium">Date & Slot:</span>
+                      <span className="font-semibold text-text-dark">{preferredDate} • {waDetails?.timeSlotLabel}</span>
+                    </div>
+                    {message && (
+                      <div className="flex justify-between items-start pt-1.5 border-t border-border-light/60">
+                        <span className="text-text-muted font-medium shrink-0 mr-2">Reason:</span>
+                        <span className="font-medium text-text-dark text-right truncate max-w-[200px]">{message}</span>
+                      </div>
+                    )}
+                    <div className="flex justify-between items-center pt-2 border-t border-border-light text-[11px] text-emerald-700 font-semibold">
+                      <span>Target WhatsApp:</span>
+                      <span>{waDetails?.targetPhone}</span>
+                    </div>
+                  </div>
+
+                  {/* WhatsApp Action Button */}
+                  {waDetails?.whatsappUrl && (
+                    <a
+                      href={waDetails.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer mb-3"
+                    >
+                      <MessageSquare className="w-4 h-4 mr-2" />
+                      Continue to WhatsApp / Send Now
+                    </a>
+                  )}
+
+                  <p className="text-[11px] text-text-muted mb-4 leading-relaxed">
+                    Agar WhatsApp automatically open nahi hua ho toh upar diye gaye green button par click karein.
+                  </p>
+
                   <button
                     onClick={onClose}
-                    className="px-6 py-2.5 bg-primary hover:bg-secondary text-white font-bold rounded-xl text-sm shadow cursor-pointer transition-all active:scale-[0.98]"
+                    className="px-6 py-2 bg-bg-light hover:bg-border-light text-text-dark font-bold rounded-xl text-xs transition-colors cursor-pointer"
                   >
                     Close Window
                   </button>
