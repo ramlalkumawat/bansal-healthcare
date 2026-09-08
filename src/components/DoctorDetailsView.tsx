@@ -42,6 +42,14 @@ const piyushGalleryImages = [
   { src: "/images/piyush_gallery_5.jpg", alt: "Waiting area at Dr Bansal's Clinic", caption: "Clinic Waiting Area" },
 ];
 
+const manishaGalleryImages = [
+  { src: "/images/manisha_gallery_1.jpg", alt: "Physiotherapy equipment - exercise balls and dumbbells", caption: "Physiotherapy Equipment" },
+  { src: "/images/manisha_gallery_2.jpg", alt: "Clinic reading corner with Doctors Day messages", caption: "Patient Appreciation Wall" },
+  { src: "/images/manisha_gallery_3.jpg", alt: "Clinic waiting area with health awareness posters", caption: "Clinic Waiting Area" },
+  { src: "/images/manisha_gallery_4.jpg", alt: "Physiotherapy treatment room at Bansal Healthcare", caption: "Treatment Room" },
+  { src: "/images/manisha_gallery_5.jpg", alt: "Dr. Manisha Bansal performing laser therapy", caption: "Laser Therapy Treatment" },
+];
+
 export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps) {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,12 +66,14 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
   }, []);
 
   const prevImage = useCallback(() => {
-    setLightboxIndex((prev) => (prev === 0 ? piyushGalleryImages.length - 1 : prev - 1));
-  }, []);
+    const images = id === "dr-piyush-bansal" ? piyushGalleryImages : manishaGalleryImages;
+    setLightboxIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  }, [id]);
 
   const nextImage = useCallback(() => {
-    setLightboxIndex((prev) => (prev === piyushGalleryImages.length - 1 ? 0 : prev + 1));
-  }, []);
+    const images = id === "dr-piyush-bansal" ? piyushGalleryImages : manishaGalleryImages;
+    setLightboxIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  }, [id]);
 
   if (!doctor) {
     return (
@@ -185,17 +195,19 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                 </p>
               </section>
 
-              {/* Photo Gallery - Only for Dr. Piyush */}
-              {isPiyush && (
+              {/* Photo Gallery */}
+              {(() => {
+                const galleryImages = isPiyush ? piyushGalleryImages : manishaGalleryImages;
+                return galleryImages.length > 0 && (
                 <section className="bg-white border border-border-light p-6 sm:p-8 rounded-3xl text-left space-y-5">
                   <h2 className="text-lg sm:text-xl font-bold text-primary flex items-center">
                     <Camera className="w-5 h-5 mr-2.5 text-accent" />
-                    Clinic & Consultation Gallery
+                    {isPiyush ? "Clinic & Consultation Gallery" : "Physiotherapy & Clinic Gallery"}
                   </h2>
                   <hr className="border-border-light" />
 
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    {piyushGalleryImages.map((image, index) => (
+                    {galleryImages.map((image, index) => (
                       <button
                         key={index}
                         onClick={() => openLightbox(index)}
@@ -216,7 +228,8 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                     ))}
                   </div>
                 </section>
-              )}
+              );
+              })()}
 
               {/* Qualifications & Medical History */}
               <section className="bg-white border border-border-light p-6 sm:p-8 rounded-3xl text-left space-y-6">
@@ -427,13 +440,13 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={piyushGalleryImages[lightboxIndex].src}
-              alt={piyushGalleryImages[lightboxIndex].alt}
+              src={(isPiyush ? piyushGalleryImages : manishaGalleryImages)[lightboxIndex].src}
+              alt={(isPiyush ? piyushGalleryImages : manishaGalleryImages)[lightboxIndex].alt}
               className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl"
             />
             <p className="text-center text-white/80 text-sm font-semibold mt-4">
-              {piyushGalleryImages[lightboxIndex].caption}
-              <span className="text-white/40 ml-2">({lightboxIndex + 1}/{piyushGalleryImages.length})</span>
+              {(isPiyush ? piyushGalleryImages : manishaGalleryImages)[lightboxIndex].caption}
+              <span className="text-white/40 ml-2">({lightboxIndex + 1}/{(isPiyush ? piyushGalleryImages : manishaGalleryImages).length})</span>
             </p>
           </div>
 
