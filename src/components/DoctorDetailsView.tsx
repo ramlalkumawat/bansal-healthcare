@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
@@ -16,7 +16,11 @@ import {
   Stethoscope,
   Activity,
   Heart,
-  ChevronRight
+  ChevronRight,
+  Camera,
+  X,
+  ChevronLeft,
+  ZoomIn
 } from "lucide-react";
 import { Doctor, clinicData } from "@/data/clinic";
 import Navbar from "@/components/Navbar";
@@ -30,9 +34,36 @@ interface DoctorDetailsViewProps {
   id: string;
 }
 
+const piyushGalleryImages = [
+  { src: "/images/piyush_gallery_1.jpg", alt: "Dr. Piyush Bansal examining a child with stethoscope", caption: "Pediatric Consultation" },
+  { src: "/images/piyush_gallery_2.jpg", alt: "Dr. Piyush Bansal providing treatment to child", caption: "Child Care & Treatment" },
+  { src: "/images/piyush_gallery_3.jpg", alt: "Dr. Piyush Bansal consulting with a young patient", caption: "Patient Consultation" },
+  { src: "/images/piyush_gallery_4.jpg", alt: "Physiotherapy treatment room at Bansal Healthcare", caption: "Physiotherapy Room" },
+  { src: "/images/piyush_gallery_5.jpg", alt: "Waiting area at Dr Bansal's Clinic", caption: "Clinic Waiting Area" },
+];
+
 export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps) {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = useCallback((index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+  }, []);
+
+  const prevImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev === 0 ? piyushGalleryImages.length - 1 : prev - 1));
+  }, []);
+
+  const nextImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev === piyushGalleryImages.length - 1 ? 0 : prev + 1));
+  }, []);
 
   if (!doctor) {
     return (
@@ -153,6 +184,39 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                   {doctor.details?.aboutText}
                 </p>
               </section>
+
+              {/* Photo Gallery - Only for Dr. Piyush */}
+              {isPiyush && (
+                <section className="bg-white border border-border-light p-6 sm:p-8 rounded-3xl text-left space-y-5">
+                  <h2 className="text-lg sm:text-xl font-bold text-primary flex items-center">
+                    <Camera className="w-5 h-5 mr-2.5 text-accent" />
+                    Clinic & Consultation Gallery
+                  </h2>
+                  <hr className="border-border-light" />
+
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {piyushGalleryImages.map((image, index) => (
+                      <button
+                        key={index}
+                        onClick={() => openLightbox(index)}
+                        className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-border-light/50 shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      >
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                          <span className="text-white text-xs font-bold">{image.caption}</span>
+                        </div>
+                        <div className="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <ZoomIn className="w-3.5 h-3.5 text-primary" />
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* Qualifications & Medical History */}
               <section className="bg-white border border-border-light p-6 sm:p-8 rounded-3xl text-left space-y-6">
@@ -334,6 +398,54 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
         onClose={() => setIsModalOpen(false)}
         defaultDoctorId={doctor.id}
       />
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors cursor-pointer"
+          >
+            <X className="w-5 h-5 text-white" />
+          </button>
+
+          {/* Previous Button */}
+          <button
+            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+            className="absolute left-3 sm:left-6 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors cursor-pointer"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          </button>
+
+          {/* Image */}
+          <div
+            className="max-w-4xl max-h-[85vh] px-12 sm:px-20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={piyushGalleryImages[lightboxIndex].src}
+              alt={piyushGalleryImages[lightboxIndex].alt}
+              className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl"
+            />
+            <p className="text-center text-white/80 text-sm font-semibold mt-4">
+              {piyushGalleryImages[lightboxIndex].caption}
+              <span className="text-white/40 ml-2">({lightboxIndex + 1}/{piyushGalleryImages.length})</span>
+            </p>
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+            className="absolute right-3 sm:right-6 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          </button>
+        </div>
+      )}
     </>
   );
 }
