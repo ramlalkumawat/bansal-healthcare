@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, MapPin, Sparkles, CheckCircle2, ShieldPlus } from "lucide-react";
+import { Calendar, MapPin, CheckCircle2, ShieldPlus } from "lucide-react";
 import { clinicData } from "@/data/clinic";
 import { motion } from "framer-motion";
 
@@ -47,13 +47,6 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
             animate="visible"
             className="lg:col-span-7 space-y-6 sm:space-y-8 text-left"
           >
-            {/* Tag / Eyebrow */}
-            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/10 px-3 py-1.5 rounded-full">
-              <Sparkles className="w-4 h-4 text-secondary" />
-              <span className="text-[11px] sm:text-xs font-bold tracking-widest text-primary uppercase">
-                {clinicData.brandName}
-              </span>
-            </motion.div>
 
             {/* Main Headline */}
             <motion.h1
