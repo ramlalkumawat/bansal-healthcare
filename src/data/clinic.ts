@@ -28,6 +28,7 @@ export interface Service {
   title: string;
   description: string;
   iconName: 'Baby' | 'Activity' | 'HeartPulse' | 'Stethoscope' | 'Syringe';
+  iconImage?: string;
 }
 
 export interface FAQItem {
@@ -148,8 +149,9 @@ export const clinicData = {
     {
       id: "physiotherapy",
       title: "Physiotherapy",
-      description: "Physiotherapy care available through Dr Manisha Bansal's Child & Physiotherapy Clinic.",
-      iconName: "Activity"
+      description: "Professional physiotherapy care offered through Dr. Manisha Bansal’s Child & Physiotherapy Clinic.",
+      iconName: "Activity",
+      iconImage: "/images/physiotherapy_logo.png"
     },
     {
       id: "vaccination",

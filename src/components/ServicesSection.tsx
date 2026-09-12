@@ -44,8 +44,16 @@ export default function ServicesSection() {
                 <div className="absolute -top-12 -right-12 w-28 h-28 bg-emerald-200/50 rounded-full group-hover:scale-125 transition-transform duration-300" />
                 
                 {/* Icon Container */}
-                <div className="p-4 bg-emerald-600 text-white rounded-2xl shadow-md mb-6 shrink-0 group-hover:bg-emerald-700 group-hover:scale-105 transition-all duration-300">
-                  <IconComponent className="w-6 h-6" />
+                <div className="w-14 h-14 bg-white text-emerald-600 rounded-2xl shadow-md mb-6 shrink-0 border border-emerald-200/80 flex items-center justify-center p-2.5 group-hover:scale-105 group-hover:border-emerald-400 group-hover:shadow-lg transition-all duration-300">
+                  {service.iconImage ? (
+                    <img
+                      src={service.iconImage}
+                      alt={service.title}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <IconComponent className="w-7 h-7 text-emerald-600" />
+                  )}
                 </div>
 
                 {/* Service Details */}
