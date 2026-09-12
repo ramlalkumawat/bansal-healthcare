@@ -104,7 +104,7 @@ export const clinicData = {
       name: "Dr. Manisha Bansal",
       qualifications: "BPT, MIAP, DNHE",
       title: "Consultant Physiotherapist",
-      availabilityNote: "Available for Physiotherapy & Pediatric Care",
+      availabilityNote: "Available for Physiotherapy and Rehabilitation care",
       phone: "+919214678687",
       whatsapp: "+919214678687",
       schedule: {
