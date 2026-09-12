@@ -144,8 +144,12 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                       e.currentTarget.style.opacity = "0";
                     }}
                   />
-                  <div className="absolute bottom-0 right-0 p-2.5 sm:p-3 bg-accent text-white rounded-tl-2xl shadow-xl z-20">
-                    <SpecialistIcon className="w-6 h-6 sm:w-7 sm:h-7" />
+                  <div className="absolute bottom-0 right-0 p-2.5 sm:p-3 bg-white/95 backdrop-blur-md rounded-tl-2xl shadow-xl z-20 flex items-center justify-center">
+                    {isPiyush ? (
+                      <Stethoscope className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
+                    ) : (
+                      <img src="/images/medical_cross_logo.png" alt="Medical Icon" className="w-6 h-6 sm:w-7 sm:h-7 object-contain" />
+                    )}
                   </div>
                 </div>
                 
@@ -298,7 +302,11 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
               {/* Specializations and Focus Area */}
               <section className="bg-white border border-border-light p-6 sm:p-8 rounded-3xl text-left space-y-5">
                 <h2 className="text-lg sm:text-xl font-bold text-primary flex items-center">
-                  <Activity className="w-5 h-5 mr-2.5 text-accent" />
+                  <img
+                    src="/images/medical_cross_logo.png"
+                    alt="Clinical Focus"
+                    className="w-5 h-5 mr-2.5 object-contain"
+                  />
                   Key Specializations & Clinical Focus
                 </h2>
                 <hr className="border-border-light" />
