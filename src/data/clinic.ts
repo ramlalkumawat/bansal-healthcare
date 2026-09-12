@@ -101,7 +101,7 @@ export const clinicData = {
     {
       id: "dr-manisha-bansal",
       name: "Dr. Manisha Bansal",
-      qualifications: "BPT, MPT",
+      qualifications: "BPT, MIAP, DNHE",
       title: "Consultant Physiotherapist",
       availabilityNote: "Available for Physiotherapy & Pediatric Care",
       phone: "+919214678687",
@@ -119,11 +119,11 @@ export const clinicData = {
       details: {
         degrees: [
           "BPT (Bachelor of Physiotherapy)",
-          "MPT (Master of Physiotherapy)"
+          "DNHE (Diploma in Nutrition and Health Education)"
         ],
-        currentWork: "Consultant Physiotherapist at Dr Bansal's Child & Physiotherapy Clinic, specializing in pediatric rehabilitation and pain management.",
+        currentWork: "Consultant Physiotherapist at Dr Bansal's Child & Physiotherapy Clinic, specializing in pediatric rehabilitation, pain management, and nutritional guidance.",
         memberships: [
-          "Active Member - Indian Association of Physiotherapists (IAP)"
+          "Member - Indian Association of Physiotherapists (MIAP)"
         ],
         experienceYears: 8,
         aboutText: "Dr. Manisha Bansal is a skilled Consultant Physiotherapist with a warm and patient-focused treatment approach. She specializes in designing personalized physical therapy and rehabilitation programs for children and adults. With 8 years of experience, she helps patients restore strength, mobility, and function following injuries, surgeries, or neuromusculoskeletal disorders.",
@@ -177,7 +177,7 @@ export const clinicData = {
     {
       id: "faq-doctors",
       question: "Who are the doctors at the clinic?",
-      answer: "The clinic features Dr. Piyush Bansal (MBBS, DCH, MIAP) specializing in child healthcare, and Dr. Manisha Bansal providing physiotherapy and child care."
+      answer: "The clinic features Dr. Piyush Bansal (MBBS, DCH, MIAP) specializing in child healthcare, and Dr. Manisha Bansal (BPT, MIAP, DNHE) providing physiotherapy and rehabilitation care."
     },
     {
       id: "faq-confirm",

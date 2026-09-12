@@ -28,10 +28,10 @@ export default function QuickInfo() {
     {
       id: "physiotherapist",
       label: "Physiotherapy",
-      value: "Dr Bansal's Clinic",
+      value: "Dr. Manisha Bansal",
       icon: Activity,
       colorClass: "text-secondary bg-secondary/10",
-      description: "Physical Rehab & Care",
+      description: "BPT, MIAP, DNHE",
       href: "/doctor/dr-manisha-bansal",
       actionText: "View Profile →"
     },
