@@ -63,7 +63,7 @@ export const clinicData = {
       name: "Dr. Piyush Kumar Bansal",
       qualifications: "MBBS, DCH, MIAP",
       title: "Consultant Pediatrician",
-      availabilityNote: "Available for Child Healthcare & Medical Consultation",
+      availabilityNote: "Child Healthcare, Consultation & Vaccination",
       phone: "+919214678687",
       whatsapp: "+919214678687",
       schedule: {
