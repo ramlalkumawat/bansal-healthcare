@@ -306,12 +306,16 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
               {/* Specializations and Focus Area */}
               <section className="bg-white border border-border-light p-6 sm:p-8 rounded-3xl text-left space-y-5">
                 <h2 className="text-lg sm:text-xl font-bold text-primary flex items-center">
-                  <div className="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center mr-3 shrink-0 shadow-xs">
-                    <img
-                      src="/images/medical_cross_green.png"
-                      alt="Clinical Focus"
-                      className="w-6 h-6 object-contain"
-                    />
+                  <div className="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center mr-3 shrink-0 shadow-xs p-1">
+                    {isPiyush ? (
+                      <SpecialistIcon className="w-5 h-5 text-accent" />
+                    ) : (
+                      <img
+                        src="/images/physiotherapy_badge_green.png"
+                        alt="Clinical Focus"
+                        className="w-full h-full object-contain"
+                      />
+                    )}
                   </div>
                   Key Specializations & Clinical Focus
                 </h2>
