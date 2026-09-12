@@ -110,7 +110,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
   const doctorWhatsapp = doctor.whatsapp || clinicData.whatsapp;
   const doctorPhone = doctor.phone || clinicData.phone;
   const cleanedPhone = doctorWhatsapp.replace(/[^0-9]/g, "");
-  const whatsappUrl = `https://wa.me/${cleanedPhone}?text=Hello%20Dr.%20${encodeURIComponent(doctor.name.split(" ").slice(-1)[0])},%20I'd%20like%20to%20inquire%20about%20booking%20an%20appointment.`;
+  const whatsappUrl = `https://wa.me/${cleanedPhone}?text=Hello%20${encodeURIComponent(isPiyush ? "Dr. Piyush Bansal" : doctor.name)},%20I'd%20like%20to%20inquire%20about%20booking%20an%20appointment.`;
 
   return (
     <>
@@ -199,7 +199,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
               <section className="bg-white border border-border-light p-6 sm:p-8 rounded-3xl text-left space-y-4">
                 <h2 className="text-lg sm:text-xl font-bold text-primary flex items-center">
                   <Heart className="w-5 h-5 mr-2.5 text-accent" />
-                  About Dr. {doctor.name.split(" ").slice(-1)[0]}
+                  About {isPiyush ? "Dr. Piyush Bansal" : "Dr. Manisha Bansal"}
                 </h2>
                 <hr className="border-border-light" />
                 <p className="text-sm sm:text-base text-text-muted leading-relaxed">
