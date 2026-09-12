@@ -27,7 +27,7 @@ export interface Service {
   id: string;
   title: string;
   description: string;
-  iconName: 'Baby' | 'HeartPulse' | 'Stethoscope' | 'Syringe';
+  iconName: 'Baby' | 'Activity' | 'HeartPulse' | 'Stethoscope' | 'Syringe';
 }
 
 export interface FAQItem {
@@ -142,19 +142,19 @@ export const clinicData = {
     {
       id: "child-healthcare",
       title: "Child Healthcare",
-      description: "Professional child-focused healthcare consultation through Dr. Piyush Bansal.",
+      description: "Professional child-focused healthcare consultation offered by Dr. Piyush Bansal.",
       iconName: "Baby"
     },
     {
       id: "physiotherapy",
       title: "Physiotherapy",
       description: "Physiotherapy care available through Dr Manisha Bansal's Child & Physiotherapy Clinic.",
-      iconName: "HeartPulse"
+      iconName: "Activity"
     },
     {
       id: "vaccination",
       title: "Vaccination",
-      description: "Consultation with Dr. Piyush Bansal.",
+      description: "Child vaccination services provided by Dr. Piyush Bansal.",
       iconName: "Syringe"
     }
   ] as Service[],

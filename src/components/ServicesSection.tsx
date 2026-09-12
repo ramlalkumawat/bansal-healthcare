@@ -1,12 +1,13 @@
 "use client";
 
-import { Baby, HeartPulse, Stethoscope, Syringe } from "lucide-react";
+import { Baby, Activity, HeartPulse, Stethoscope, Syringe } from "lucide-react";
 import { clinicData } from "@/data/clinic";
 
 export default function ServicesSection() {
   // Mapping configuration data icon strings to Lucide Icon components
-  const iconMap = {
+  const iconMap: Record<string, React.ElementType> = {
     Baby: Baby,
+    Activity: Activity,
     HeartPulse: HeartPulse,
     Stethoscope: Stethoscope,
     Syringe: Syringe,
