@@ -144,11 +144,15 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                       e.currentTarget.style.opacity = "0";
                     }}
                   />
-                  <div className="absolute bottom-0 right-0 p-2.5 sm:p-3 bg-white/95 backdrop-blur-md rounded-tl-2xl shadow-xl z-20 flex items-center justify-center">
+                  <div className="absolute bottom-0 right-0 p-3 sm:p-4 bg-white/95 backdrop-blur-md rounded-tl-3xl shadow-xl z-20 flex items-center justify-center border-t border-l border-emerald-200/60">
                     {isPiyush ? (
-                      <Stethoscope className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
+                      <Stethoscope className="w-7 h-7 sm:w-8 sm:h-8 text-accent" />
                     ) : (
-                      <img src="/images/medical_cross_green.png" alt="Medical Icon" className="w-6 h-6 sm:w-7 sm:h-7 object-contain" />
+                      <img
+                        src="/images/physiotherapy_badge_green.png"
+                        alt="Physiotherapy Logo"
+                        className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                      />
                     )}
                   </div>
                 </div>

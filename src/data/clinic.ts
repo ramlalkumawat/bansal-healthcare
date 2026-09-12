@@ -151,7 +151,7 @@ export const clinicData = {
       title: "Physiotherapy",
       description: "Professional physiotherapy care offered through Dr. Manisha Bansal’s Child & Physiotherapy Clinic.",
       iconName: "Activity",
-      iconImage: "/images/physiotherapy_logo.png"
+      iconImage: "/images/physiotherapy_badge_green.png"
     },
     {
       id: "vaccination",

@@ -57,11 +57,15 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                   <div className="absolute inset-0 bg-gradient-to-t from-[#071F26]/90 via-[#071F26]/20 to-transparent z-20" />
                   
                   {/* Floating Specialty Icon */}
-                  <div className="absolute top-4 right-4 p-2.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg z-30 flex items-center justify-center">
+                  <div className="absolute top-4 right-4 w-12 h-12 sm:w-14 sm:h-14 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl z-30 flex items-center justify-center border border-emerald-200/80 p-2">
                     {isPiyush ? (
-                      <SpecialistIcon className="w-6 h-6 text-accent" />
+                      <SpecialistIcon className="w-7 h-7 text-accent" />
                     ) : (
-                      <img src="/images/medical_cross_green.png" alt="Medical Icon" className="w-6 h-6 object-contain" />
+                      <img
+                        src="/images/physiotherapy_badge_green.png"
+                        alt="Physiotherapy Logo"
+                        className="w-full h-full object-contain"
+                      />
                     )}
                   </div>
                   

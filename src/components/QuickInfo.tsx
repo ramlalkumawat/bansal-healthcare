@@ -30,7 +30,7 @@ export default function QuickInfo() {
       label: "Physiotherapy",
       value: "Dr. Manisha Bansal",
       icon: Activity,
-      iconImage: "/images/medical_cross_green.png",
+      iconImage: "/images/physiotherapy_badge_green.png",
       colorClass: "text-secondary bg-secondary/10",
       description: "BPT, MIAP, DNHE",
       href: "/doctor/dr-manisha-bansal",
