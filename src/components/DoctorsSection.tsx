@@ -2,6 +2,7 @@
 
 import { Calendar, Stethoscope, Activity, Sparkles, Check, User } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { clinicData } from "@/data/clinic";
 
 interface DoctorsSectionProps {
@@ -9,6 +10,8 @@ interface DoctorsSectionProps {
 }
 
 export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProps) {
+  const router = useRouter();
+
   return (
     <section id="doctors" className="py-20 bg-bg-light border-y border-border-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,7 +25,7 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
             Consult Qualified Specialists
           </h2>
           <p className="text-sm text-text-muted">
-            Meet the primary medical consultants at Dr Bansal's Child & Physiotherapy Clinic.
+            Meet the Primary medical consultants at Dr Bansal's Child & Physiotherapy Clinic.
           </p>
         </div>
 
@@ -36,7 +39,8 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
             return (
               <div
                 key={doctor.id}
-                className="bg-white rounded-3xl overflow-hidden border border-border-light shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col text-left"
+                onClick={() => router.push(`/doctor/${doctor.id}`)}
+                className="bg-white rounded-3xl overflow-hidden border border-border-light shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col text-left cursor-pointer group"
               >
                 {/* Visual Top Showcase Image Area (2x Larger Full Portrait) */}
                 <div className="relative w-full h-80 sm:h-96 bg-primary/10 overflow-hidden group">
@@ -114,13 +118,17 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                   <div className="grid grid-cols-2 gap-3">
                     <Link
                       href={`/doctor/${doctor.id}`}
+                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center justify-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary/5 font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
                     >
                       <User className="w-3.5 h-3.5 mr-1.5 shrink-0" />
                       View Profile
                     </Link>
                     <button
-                      onClick={() => onOpenAppointment(doctor.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenAppointment(doctor.id);
+                      }}
                       className="inline-flex items-center justify-center py-2.5 px-3 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
                     >
                       <Calendar className="w-3.5 h-3.5 mr-1.5 shrink-0" />
