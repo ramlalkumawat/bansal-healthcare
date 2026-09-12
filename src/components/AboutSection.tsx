@@ -36,7 +36,7 @@ export default function AboutSection() {
               Healthcare With a Personal Touch
             </h2>
             <p className="text-base sm:text-lg text-text-muted leading-relaxed">
-              Bansal Healthcare brings together professional medical consultation and child & physiotherapy care in one convenient location in Jagatpura, Jaipur. We aim to offer clinical excellence with an empathetic, patient-first approach.
+              Bansal Healthcare brings together professional medical consultation and child & physiotherapy care in one convenient location in Jagatpura, Jaipur. Our aim to offer clinical excellence with an empathetic, patient-first approach.
             </p>
 
             {/* Core Values / Highlights Grid */}
