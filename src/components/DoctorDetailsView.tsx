@@ -148,7 +148,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                     {isPiyush ? (
                       <Stethoscope className="w-6 h-6 sm:w-7 sm:h-7 text-accent" />
                     ) : (
-                      <img src="/images/medical_cross_logo.png" alt="Medical Icon" className="w-6 h-6 sm:w-7 sm:h-7 object-contain" />
+                      <img src="/images/medical_cross_green.png" alt="Medical Icon" className="w-6 h-6 sm:w-7 sm:h-7 object-contain" />
                     )}
                   </div>
                 </div>
@@ -302,11 +302,13 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
               {/* Specializations and Focus Area */}
               <section className="bg-white border border-border-light p-6 sm:p-8 rounded-3xl text-left space-y-5">
                 <h2 className="text-lg sm:text-xl font-bold text-primary flex items-center">
-                  <img
-                    src="/images/medical_cross_logo.png"
-                    alt="Clinical Focus"
-                    className="w-5 h-5 mr-2.5 object-contain"
-                  />
+                  <div className="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center mr-3 shrink-0 shadow-xs">
+                    <img
+                      src="/images/medical_cross_green.png"
+                      alt="Clinical Focus"
+                      className="w-6 h-6 object-contain"
+                    />
+                  </div>
                   Key Specializations & Clinical Focus
                 </h2>
                 <hr className="border-border-light" />

@@ -59,9 +59,9 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                   {/* Floating Specialty Icon */}
                   <div className="absolute top-4 right-4 p-2.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg z-30 flex items-center justify-center">
                     {isPiyush ? (
-                      <SpecialistIcon className="w-5 h-5 text-accent" />
+                      <SpecialistIcon className="w-6 h-6 text-accent" />
                     ) : (
-                      <img src="/images/medical_cross_logo.png" alt="Medical Icon" className="w-5 h-5 object-contain" />
+                      <img src="/images/medical_cross_green.png" alt="Medical Icon" className="w-6 h-6 object-contain" />
                     )}
                   </div>
                   

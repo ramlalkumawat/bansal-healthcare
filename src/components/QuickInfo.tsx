@@ -30,7 +30,7 @@ export default function QuickInfo() {
       label: "Physiotherapy",
       value: "Dr. Manisha Bansal",
       icon: Activity,
-      iconImage: "/images/medical_cross_logo.png",
+      iconImage: "/images/medical_cross_green.png",
       colorClass: "text-secondary bg-secondary/10",
       description: "BPT, MIAP, DNHE",
       href: "/doctor/dr-manisha-bansal",
@@ -58,7 +58,7 @@ export default function QuickInfo() {
             <>
               <div className={`p-3 rounded-xl shrink-0 flex items-center justify-center ${card.colorClass}`}>
                 {"iconImage" in card && card.iconImage ? (
-                  <img src={card.iconImage as string} alt={card.label} className="w-5 h-5 object-contain" />
+                  <img src={card.iconImage as string} alt={card.label} className="w-6 h-6 object-contain" />
                 ) : (
                   <Icon className="w-5 h-5" />
                 )}
