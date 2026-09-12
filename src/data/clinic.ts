@@ -129,12 +129,14 @@ export const clinicData = {
         experienceYears: 8,
         aboutText: "Dr. Manisha Bansal is a skilled Consultant Physiotherapist with a warm and patient-focused treatment approach. She specializes in designing personalized physical therapy and rehabilitation programs for children and adults. With 8 years of experience, she helps patients restore strength, mobility, and function following injuries, surgeries, or neuromusculoskeletal disorders.",
         specializations: [
-          "Pediatric Physical Therapy",
-          "Post-Surgical Rehabilitation",
-          "Orthopedic Physical Therapy",
+          "Orthopedic Physiotherapy",
           "Neurological Rehabilitation",
+          "Sports Injury Rehabilitation",
+          "Pain Management",
           "Joint Pain & Arthritis Management",
-          "Posture & Spinal Care Correction"
+          "Post-Surgical Rehabilitation",
+          "Posture & Spinal Care",
+          "Pediatric Physiotherapy"
         ]
       }
     }
