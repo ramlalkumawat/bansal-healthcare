@@ -119,12 +119,12 @@ export const clinicData = {
       imagePlaceholder: "dr_manisha_bansal",
       details: {
         degrees: [
-          "BPT (Bachelor of Physiotherapy)",
+          "BPT (Bachelor of Physiotherapy) — Mahatma Gandhi Medical College",
           "DNHE (Diploma in Nutrition and Health Education)"
         ],
-        currentWork: "Consultant Physiotherapist at Dr Bansal's Child & Physiotherapy Clinic, specializing in pediatric rehabilitation, pain management, and nutritional guidance.",
+        currentWork: "Consultant Physiotherapist at Bansal Healthcare, specializing in rehabilitation, pain management, nutritional guidance, and sports & orthopedic physiotherapy.",
         memberships: [
-          "Member - Indian Association of Physiotherapists (MIAP)"
+          "Life Member – Indian Association of Physiotherapists (MIAP)"
         ],
         experienceYears: 8,
         aboutText: "Dr. Manisha Bansal is a skilled Consultant Physiotherapist with a warm and patient-focused treatment approach. She specializes in designing personalized physical therapy and rehabilitation programs for children and adults. With 8 years of experience, she helps patients restore strength, mobility, and function following injuries, surgeries, or neuromusculoskeletal disorders.",
