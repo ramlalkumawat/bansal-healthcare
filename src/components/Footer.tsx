@@ -83,20 +83,30 @@ export default function Footer() {
                 Clinic Address
               </h4>
               <address className="not-italic text-xs text-white/75 leading-relaxed font-medium space-y-1">
+                <span className="block text-white font-bold">{clinicData.address.doctorName}</span>
                 <span className="block">{clinicData.address.street}</span>
                 <span className="block">{clinicData.address.landmark}</span>
-                <span className="block">{clinicData.address.area}, {clinicData.address.city}</span>
+                <span className="block">{clinicData.address.area}, {clinicData.address.city} – {clinicData.address.pincode}</span>
                 <span className="block">{clinicData.address.state}, {clinicData.address.country}</span>
               </address>
-              <div className="pt-1">
+              <div className="pt-2 flex items-center space-x-4">
                 <a
                   href={clinicData.directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-xs font-bold text-accent hover:text-white transition-colors"
                 >
-                  <span>Navigate on maps</span>
+                  <span>Get Directions</span>
                   <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+                </a>
+                <a
+                  href={clinicData.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs font-semibold text-white/60 hover:text-white transition-colors"
+                >
+                  <span>Google Maps</span>
+                  <ArrowUpRight className="w-3 h-3 ml-0.5" />
                 </a>
               </div>
             </div>

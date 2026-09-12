@@ -63,11 +63,13 @@ export default function RootLayout({
         "logo": `${clinicData.seo.url}/images/logo.png`,
         "image": `${clinicData.seo.url}/images/og-image.jpg`,
         "description": clinicData.seo.description,
+        "hasMap": clinicData.mapUrl,
         "address": {
           "@type": "PostalAddress",
           "streetAddress": `${clinicData.address.street}, ${clinicData.address.landmark}`,
           "addressLocality": clinicData.address.area,
           "addressRegion": clinicData.address.city,
+          "postalCode": clinicData.address.pincode,
           "addressCountry": "IN"
         },
         "telephone": clinicData.phone || undefined,
@@ -91,6 +93,7 @@ export default function RootLayout({
         "@id": `${clinicData.seo.url}/#dr-piyush-bansal`,
         "name": "Dr. Piyush Bansal",
         "medicalSpecialty": "Pediatric",
+        "hasMap": clinicData.mapUrl,
         "worksFor": {
           "@type": "MedicalClinic",
           "@id": `${clinicData.seo.url}/#clinic`
@@ -100,6 +103,7 @@ export default function RootLayout({
           "streetAddress": `${clinicData.address.street}, ${clinicData.address.landmark}`,
           "addressLocality": clinicData.address.area,
           "addressRegion": clinicData.address.city,
+          "postalCode": clinicData.address.pincode,
           "addressCountry": "IN"
         }
       },
@@ -108,6 +112,7 @@ export default function RootLayout({
         "@id": `${clinicData.seo.url}/#dr-manisha-bansal`,
         "name": "Dr. Manisha Bansal",
         "medicalSpecialty": "Physiotherapy",
+        "hasMap": clinicData.mapUrl,
         "worksFor": {
           "@type": "MedicalClinic",
           "@id": `${clinicData.seo.url}/#clinic`
@@ -117,6 +122,7 @@ export default function RootLayout({
           "streetAddress": `${clinicData.address.street}, ${clinicData.address.landmark}`,
           "addressLocality": clinicData.address.area,
           "addressRegion": clinicData.address.city,
+          "postalCode": clinicData.address.pincode,
           "addressCountry": "IN"
         }
       }

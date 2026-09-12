@@ -11,7 +11,9 @@ export default function QuickInfo() {
       value: "Jagatpura, Jaipur",
       icon: MapPin,
       colorClass: "text-accent bg-accent/10",
-      description: `${clinicData.address.street}, ${clinicData.address.landmark}`
+      description: `${clinicData.address.street}, ${clinicData.address.landmark}`,
+      href: clinicData.directionsUrl,
+      actionText: "Get Directions →"
     },
     {
       id: "pediatrician",
@@ -19,7 +21,9 @@ export default function QuickInfo() {
       value: "Dr. Piyush Bansal",
       icon: User,
       colorClass: "text-primary bg-primary/10",
-      description: "MBBS, DCH, MIAP"
+      description: "MBBS, DCH, MIAP",
+      href: "/doctor/dr-piyush-bansal",
+      actionText: "View Profile →"
     },
     {
       id: "physiotherapist",
@@ -27,7 +31,9 @@ export default function QuickInfo() {
       value: "Dr Bansal's Clinic",
       icon: Activity,
       colorClass: "text-secondary bg-secondary/10",
-      description: "Physical Rehab & Care"
+      description: "Physical Rehab & Care",
+      href: "/doctor/dr-manisha-bansal",
+      actionText: "View Profile →"
     },
     {
       id: "timings",
@@ -35,7 +41,9 @@ export default function QuickInfo() {
       value: "Morning & Evening",
       icon: Clock,
       colorClass: "text-emerald-600 bg-emerald-50",
-      description: "Sessions available daily"
+      description: "Sessions available daily",
+      href: "/#timings",
+      actionText: "Check Schedule →"
     }
   ];
 
@@ -45,26 +53,52 @@ export default function QuickInfo() {
       <div className="flex md:grid md:grid-cols-4 gap-4 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory scrollbar-none">
         {infoCards.map((card) => {
           const Icon = card.icon;
-          return (
-            <div
-              key={card.id}
-              className="min-w-[260px] md:min-w-0 flex-1 snap-start bg-white p-5 rounded-2xl shadow-md border border-border-light flex items-start space-x-4 hover:shadow-lg transition-shadow duration-300"
-            >
+          const CardContent = (
+            <>
               <div className={`p-3 rounded-xl shrink-0 ${card.colorClass}`}>
                 <Icon className="w-5 h-5" />
               </div>
-              <div className="space-y-1 text-left">
+              <div className="space-y-1 text-left flex-1 min-w-0">
                 <span className="block text-[11px] font-bold text-text-muted uppercase tracking-wider">
                   {card.label}
                 </span>
                 <span className="block text-sm font-bold text-primary">
                   {card.value}
                 </span>
-                <span className="block text-xs text-text-muted">
+                <span className="block text-xs text-text-muted line-clamp-2">
                   {card.description}
                 </span>
+                {card.actionText && (
+                  <span className="inline-block text-[11px] font-bold text-accent pt-1">
+                    {card.actionText}
+                  </span>
+                )}
               </div>
-            </div>
+            </>
+          );
+
+          if (card.href.startsWith("http")) {
+            return (
+              <a
+                key={card.id}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-w-[260px] md:min-w-0 flex-1 snap-start bg-white p-5 rounded-2xl shadow-md border border-border-light flex items-start space-x-4 hover:shadow-lg hover:border-accent/30 transition-all duration-300 group cursor-pointer"
+              >
+                {CardContent}
+              </a>
+            );
+          }
+
+          return (
+            <a
+              key={card.id}
+              href={card.href}
+              className="min-w-[260px] md:min-w-0 flex-1 snap-start bg-white p-5 rounded-2xl shadow-md border border-border-light flex items-start space-x-4 hover:shadow-lg hover:border-primary/30 transition-all duration-300 group cursor-pointer"
+            >
+              {CardContent}
+            </a>
           );
         })}
       </div>

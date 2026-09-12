@@ -25,80 +25,72 @@ export default function LocationSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
           
           {/* Map Placement Card (8 columns on desktop) */}
-          <div className="lg:col-span-8 bg-white border border-border-light rounded-[32px] overflow-hidden min-h-[350px] shadow-sm relative flex flex-col items-center justify-center p-8 group">
-            
-            {/* Visual Vector Grid suggesting local Jaipur maps */}
-            <div className="absolute inset-0 bg-[radial-gradient(#DCE8EC_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-40 -z-10" />
-            
-            {/* Styled Abstract Road Layout to mimic a premium map preview */}
-            <div className="absolute top-1/3 left-0 right-0 h-4 bg-border-light transform -rotate-12 -z-10" />
-            <div className="absolute top-0 bottom-0 left-1/4 w-4 bg-border-light transform rotate-45 -z-10" />
-            <div className="absolute top-1/2 left-10 w-24 h-24 rounded-full border-2 border-border-light bg-bg-light/40 -z-10" />
+          <div className="lg:col-span-8 bg-white border border-border-light rounded-[32px] overflow-hidden min-h-[420px] shadow-sm relative flex flex-col group">
+            <iframe
+              title="Dr Piyush Bansal Clinic Location Map"
+              src={clinicData.mapEmbedUrl}
+              className="w-full h-full min-h-[420px] border-0"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            />
 
-            {/* Pulsing Pin Indicator */}
-            <div className="relative flex flex-col items-center mb-6">
-              <div className="absolute -top-3 w-10 h-10 bg-accent/20 rounded-full animate-ping" />
-              <div className="p-4 bg-primary text-white rounded-full shadow-lg border-2 border-white relative z-10">
-                <MapPin className="w-6 h-6 text-accent" />
+            {/* Floating Location Badge */}
+            <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-border-light shadow-md flex items-center space-x-2.5 pointer-events-none">
+              <div className="p-1.5 rounded-xl bg-accent/10 text-accent">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <div className="text-left">
+                <p className="text-xs font-bold text-primary">{clinicData.address.doctorName}</p>
+                <p className="text-[10px] text-text-muted">Kusum Vihar, Lane 5, SKIT Road, Jagatpura</p>
               </div>
             </div>
 
-              {/* Map Placeholder Headline */}
-              <div className="text-center max-w-md space-y-4">
-                <h3 className="text-lg font-bold text-primary">View Clinic Location</h3>
-                <p className="text-xs text-text-muted leading-relaxed">
-                  {clinicData.address.fullAddress}
+            {/* Floating Open in Google Maps CTA */}
+            <div className="absolute bottom-4 right-4">
+              <a
+                href={clinicData.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-primary/95 hover:bg-secondary text-white text-xs font-bold shadow-lg backdrop-blur-md transition-all transform hover:-translate-y-0.5 cursor-pointer"
+              >
+                <ExternalLink className="w-3.5 h-3.5 mr-1.5 text-accent" />
+                Open in Google Maps
+              </a>
+            </div>
+          </div>
+
+          {/* Location details card (4 columns on desktop) */}
+          <div className="lg:col-span-4 bg-white border border-border-light rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-sm">
+            <div className="space-y-6">
+              <div>
+                <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1">
+                  Full Address
+                </span>
+                <p className="text-sm font-semibold text-text-dark leading-relaxed">
+                  <span className="text-primary font-bold block">{clinicData.address.doctorName}</span>
+                  {clinicData.address.street}, <br />
+                  {clinicData.address.landmark}, <br />
+                  {clinicData.address.area}, {clinicData.address.city}, <br />
+                  {clinicData.address.state} – {clinicData.address.pincode}
                 </p>
-                
-                <div className="pt-2">
-                  <a
-                    href={clinicData.mapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary hover:bg-secondary text-white text-xs font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5 mr-2 text-accent" />
-                    Open in Google Maps
-                  </a>
-                </div>
               </div>
 
-              {/* Map Scale indicator */}
-              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-border-light text-[10px] font-bold text-text-muted flex items-center space-x-1.5">
-                <Compass className="w-3.5 h-3.5 text-secondary" />
-                <span>Jaipur, Jagatpura Zone</span>
+              <div>
+                <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1">
+                  Key Landmark
+                </span>
+                <p className="text-xs font-medium text-text-muted leading-relaxed">
+                  Conveniently situated at 247, Kusum Vihar, Lane 5, Junction, SKIT Road (near 7), Jagatpura, Jaipur. Accessible via public and private transit.
+                </p>
               </div>
-            </div>
 
-            {/* Location details card (4 columns on desktop) */}
-            <div className="lg:col-span-4 bg-white border border-border-light rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-sm">
-              <div className="space-y-6">
-                <div>
-                  <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1">
-                    Full Address
-                  </span>
-                  <p className="text-sm font-semibold text-text-dark leading-relaxed">
-                    {clinicData.address.street}, <br />
-                    {clinicData.address.landmark}, <br />
-                    {clinicData.address.area}, {clinicData.address.city}, {clinicData.address.state}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1">
-                    Key Landmark
-                  </span>
-                  <p className="text-xs font-medium text-text-muted leading-relaxed">
-                    Conveniently situated on SKIT Road (Gali No. 5, Kusum Vihar), Jagatpura, making it simple to find for parents and physiotherapy patients.
-                  </p>
-                </div>
-
-              <div className="border-t border-border-light pt-6">
-                <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-2">
-                  Need Help Navigating?
+              <div className="border-t border-border-light pt-5">
+                <span className="text-[10px] font-bold text-text-muted uppercase tracking-wider block mb-1.5">
+                  Need Turn-by-Turn Navigation?
                 </span>
                 <p className="text-xs text-text-muted leading-relaxed">
-                  Click below to generate turn-by-turn driving directions from your current GPS location directly to the clinic gate.
+                  Tap below to launch live GPS turn-by-turn driving directions from your location directly to the clinic.
                 </p>
               </div>
             </div>
@@ -107,9 +99,9 @@ export default function LocationSection() {
               href={clinicData.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 w-full inline-flex items-center justify-center py-3 px-4 rounded-2xl bg-accent text-white font-bold text-xs shadow-md hover:bg-secondary cursor-pointer transition-all active:scale-[0.98]"
+              className="mt-6 w-full inline-flex items-center justify-center py-3.5 px-4 rounded-2xl bg-accent text-white font-bold text-xs shadow-md hover:bg-secondary cursor-pointer transition-all active:scale-[0.98]"
             >
-              <Navigation className="w-3.5 h-3.5 mr-2" />
+              <Navigation className="w-4 h-4 mr-2" />
               Get Driving Directions
             </a>
           </div>

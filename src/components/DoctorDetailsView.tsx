@@ -20,7 +20,9 @@ import {
   Camera,
   X,
   ChevronLeft,
-  ZoomIn
+  ZoomIn,
+  MapPin,
+  Navigation
 } from "lucide-react";
 import { Doctor, clinicData } from "@/data/clinic";
 import Navbar from "@/components/Navbar";
@@ -388,6 +390,40 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                   >
                     <MessageSquare className="w-3.5 h-3.5 mr-2 text-emerald-400" />
                     Consult on WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              {/* Clinic Location & Directions Card */}
+              <div className="bg-white border border-border-light p-6 rounded-3xl shadow-sm space-y-4">
+                <div className="flex items-center space-x-2 text-primary font-bold text-sm">
+                  <MapPin className="w-4 h-4 text-accent shrink-0" />
+                  <span>Clinic Location & Directions</span>
+                </div>
+                <hr className="border-border-light" />
+                <div className="text-xs text-text-muted space-y-1">
+                  <p className="font-bold text-primary">{clinicData.address.doctorName}</p>
+                  <p>{clinicData.address.street}</p>
+                  <p>{clinicData.address.landmark}</p>
+                  <p>{clinicData.address.area}, {clinicData.address.city} – {clinicData.address.pincode}</p>
+                </div>
+                <div className="pt-2 flex flex-col gap-2">
+                  <a
+                    href={clinicData.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl bg-accent hover:bg-secondary text-white font-bold text-xs shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                  >
+                    <Navigation className="w-3.5 h-3.5 mr-1.5" />
+                    Get Directions
+                  </a>
+                  <a
+                    href={clinicData.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center py-2 px-4 rounded-xl border border-border-light text-primary hover:bg-bg-light font-bold text-xs transition-all text-center"
+                  >
+                    Open in Google Maps
                   </a>
                 </div>
               </div>

@@ -42,16 +42,19 @@ export const clinicData = {
   phone: "+919214678687",
   whatsapp: "+919214678687",
   address: {
-    street: "247, Kusum Vihar, Gali No. 5",
-    landmark: "SKIT Road",
+    doctorName: "Dr Piyush Bansal",
+    street: "247, Kusum Vihar, Lane 5",
+    landmark: "Junction, SKIT Road, near 7",
     area: "Jagatpura",
     city: "Jaipur",
     state: "Rajasthan",
+    pincode: "302017",
     country: "India",
-    fullAddress: "247, Kusum Vihar, Gali No. 5, SKIT Road, Jagatpura, Jaipur, Rajasthan, India"
+    fullAddress: "Dr Piyush Bansal, 247, Kusum Vihar, Lane 5, Junction, SKIT Road, near 7, Jagatpura, Jaipur, Rajasthan 302017"
   },
-  mapUrl: "https://www.google.com/maps/search/?api=1&query=247,+Kusum+Vihar,+Gali+No.+5,+SKIT+Road,+Jagatpura,+Jaipur",
-  directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=247,+Kusum+Vihar,+Gali+No.+5,+SKIT+Road,+Jagatpura,+Jaipur",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=Dr+Piyush+Bansal,+247,+Kusum+Vihar,+Lane+5,+Junction,+SKIT+Road,+near+7,+Jagatpura,+Jaipur,+Rajasthan+302017",
+  directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=Dr+Piyush+Bansal,+247,+Kusum+Vihar,+Lane+5,+Junction,+SKIT+Road,+near+7,+Jagatpura,+Jaipur,+Rajasthan+302017",
+  mapEmbedUrl: "https://maps.google.com/maps?q=Dr+Piyush+Bansal,+247,+Kusum+Vihar,+Lane+5,+Junction,+SKIT+Road,+near+7,+Jagatpura,+Jaipur,+Rajasthan+302017&t=&z=16&ie=UTF8&iwloc=&output=embed",
   timingsNote: "Please confirm availability before visiting.",
   doctors: [
     {
@@ -159,7 +162,7 @@ export const clinicData = {
     {
       id: "faq-location",
       question: "Where is Dr Bansal's Child & Physiotherapy Clinic located?",
-      answer: "The clinic is located at 247, Kusum Vihar, Gali No. 5, SKIT Road, Jagatpura, Jaipur, Rajasthan, India."
+      answer: "The clinic is located at Dr Piyush Bansal, 247, Kusum Vihar, Lane 5, Junction, SKIT Road, near 7, Jagatpura, Jaipur, Rajasthan 302017."
     },
     {
       id: "faq-timings-dr-piyush",

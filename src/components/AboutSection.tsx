@@ -73,13 +73,14 @@ export default function AboutSection() {
                   </div>
                   
                   <address className="not-italic text-sm text-text-dark font-medium leading-relaxed">
+                    <span className="text-primary font-bold block">{clinicData.address.doctorName}</span>
                     {clinicData.address.street}, <br />
                     {clinicData.address.landmark}, <br />
-                    {clinicData.address.area}, {clinicData.address.city}, <br />
+                    {clinicData.address.area}, {clinicData.address.city} – {clinicData.address.pincode}, <br />
                     {clinicData.address.state}, {clinicData.address.country}
                   </address>
 
-                  <div className="pt-2">
+                  <div className="pt-2 flex flex-wrap gap-2">
                     <a
                       href={clinicData.directionsUrl}
                       target="_blank"
@@ -87,6 +88,14 @@ export default function AboutSection() {
                       className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-accent hover:bg-secondary text-white text-xs font-bold shadow transition-all cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0"
                     >
                       Get Directions
+                    </a>
+                    <a
+                      href={clinicData.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-4 py-2.5 rounded-full bg-white hover:bg-bg-light border border-border-light text-primary text-xs font-bold shadow-sm transition-all"
+                    >
+                      View on Map
                     </a>
                   </div>
                 </div>
@@ -97,7 +106,7 @@ export default function AboutSection() {
             <div className="border border-border-light p-5 rounded-[20px] bg-white flex items-center space-x-4 text-left">
               <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shrink-0" />
               <p className="text-xs font-semibold text-text-dark">
-                Morning & Evening Consultations • Easily accessible via SKIT Road
+                Morning & Evening Consultations • Easily accessible via SKIT Road (near 7 Junction)
               </p>
             </div>
           </div>

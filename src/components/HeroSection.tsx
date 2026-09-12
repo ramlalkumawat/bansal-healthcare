@@ -39,7 +39,7 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Text Content Grid (7 columns on desktop) */}
           <motion.div
             variants={staggerContainer}
@@ -72,13 +72,19 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
               variants={fadeInUp}
               className="flex flex-wrap items-center gap-4 text-sm font-semibold text-text-dark"
             >
-              <div className="flex items-center space-x-1.5 bg-white shadow-sm border border-border-light px-3.5 py-1.5 rounded-full">
-                <MapPin className="w-4 h-4 text-accent" />
-                <span>Jagatpura, Jaipur</span>
-              </div>
+              <a
+                href={clinicData.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Get directions to 247, Kusum Vihar, Lane 5, SKIT Road"
+                className="flex items-center space-x-1.5 bg-white shadow-sm border border-border-light hover:border-accent px-3.5 py-1.5 rounded-full hover:shadow-md transition-all group cursor-pointer"
+              >
+                <MapPin className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                <span className="group-hover:text-primary">SKIT Road, Jagatpura, Jaipur</span>
+              </a>
               <div className="flex items-center space-x-1.5 bg-white shadow-sm border border-border-light px-3.5 py-1.5 rounded-full">
                 <CheckCircle2 className="w-4 h-4 text-secondary" />
-                <span>Child & Physiotherapy Specialists</span>
+                <span>Child & Physiotherapy Specialist</span>
               </div>
             </motion.div>
 
@@ -107,7 +113,7 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
 
           {/* Right Image/Visual Grid (5 columns on desktop) */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
-            
+
             {/* Premium Placeholder Image Container */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
