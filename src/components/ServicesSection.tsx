@@ -1,6 +1,6 @@
 "use client";
 
-import { Baby, HeartPulse, Stethoscope } from "lucide-react";
+import { Baby, HeartPulse, Stethoscope, Syringe } from "lucide-react";
 import { clinicData } from "@/data/clinic";
 
 export default function ServicesSection() {
@@ -9,6 +9,7 @@ export default function ServicesSection() {
     Baby: Baby,
     HeartPulse: HeartPulse,
     Stethoscope: Stethoscope,
+    Syringe: Syringe,
   };
 
   return (
@@ -31,7 +32,7 @@ export default function ServicesSection() {
         {/* Services Grid (Horizontal on desktop, stacked on mobile) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {clinicData.services.map((service) => {
-            const IconComponent = iconMap[service.iconName];
+            const IconComponent = iconMap[service.iconName] || Stethoscope;
             
             return (
               <div
