@@ -191,8 +191,16 @@ export const clinicData = {
   ] as FAQItem[],
   seo: {
     title: "Bansal Healthcare | Child & Physiotherapy Clinic in Jagatpura, Jaipur",
-    description: "Dr Bansal's Child & Physiotherapy Clinic in Jagatpura, Jaipur. View doctors, clinic timings, services, location and appointment information.",
+    description: "Bansal Healthcare Clinic (Dr Bansal's Child & Physiotherapy Clinic) in Jagatpura, Jaipur. Expert care by Dr. Piyush Kumar Bansal (Pediatrics & Child Healthcare) and Dr. Manisha Bansal (Physiotherapy).",
     keywords: [
+      "Bansal clinic",
+      "Child clinic",
+      "Bansal healthcare clinic",
+      "Dr piyush kumar bansal",
+      "Dr Manisha Bansal",
+      "Physiotherapy",
+      "Pediatrics",
+      "Child healthcare",
       "Child clinic in Jagatpura Jaipur",
       "Child doctor in Jagatpura Jaipur",
       "Pediatric consultation Jagatpura",
@@ -202,7 +210,7 @@ export const clinicData = {
       "Bansal Healthcare Jaipur",
       "Child & Physiotherapy Clinic Jaipur"
     ],
-    url: "https://bansalhealthcare.co.in", // Placeholder production URL
-    ogImage: "images/og-image.jpg"
+    url: "https://bansalhealthcare.co.in",
+    ogImage: "/images/og-image.jpg"
   }
 };

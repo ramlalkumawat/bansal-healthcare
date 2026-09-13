@@ -18,8 +18,22 @@ export const metadata: Metadata = {
   title: clinicData.seo.title,
   description: clinicData.seo.description,
   keywords: clinicData.seo.keywords,
+  authors: [{ name: "Dr. Piyush Kumar Bansal" }, { name: "Dr. Manisha Bansal" }],
+  creator: "Bansal Healthcare Clinic",
+  publisher: "Bansal Healthcare Clinic",
   alternates: {
     canonical: clinicData.seo.url,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title: clinicData.seo.title,
@@ -58,11 +72,28 @@ export default function RootLayout({
         "@type": "MedicalClinic",
         "@id": `${clinicData.seo.url}/#clinic`,
         "name": clinicData.name,
-        "alternateName": clinicData.brandName,
+        "alternateName": [
+          "Bansal Clinic",
+          "Bansal Healthcare Clinic",
+          "Bansal Healthcare",
+          "Child Clinic Jagatpura"
+        ],
         "url": clinicData.seo.url,
         "logo": `${clinicData.seo.url}/images/logo.png`,
         "image": `${clinicData.seo.url}/images/og-image.jpg`,
         "description": clinicData.seo.description,
+        "keywords": clinicData.seo.keywords.join(", "),
+        "medicalSpecialty": ["Pediatrics", "Physiotherapy", "Child Healthcare"],
+        "knowsAbout": [
+          "Bansal clinic",
+          "Child clinic",
+          "Bansal healthcare clinic",
+          "Dr piyush kumar bansal",
+          "Dr Manisha Bansal",
+          "Physiotherapy",
+          "Pediatrics",
+          "Child healthcare"
+        ],
         "hasMap": clinicData.mapUrl,
         "address": {
           "@type": "PostalAddress",
@@ -91,8 +122,17 @@ export default function RootLayout({
       {
         "@type": "Physician",
         "@id": `${clinicData.seo.url}/#dr-piyush-bansal`,
-        "name": "Dr. Piyush Bansal",
-        "medicalSpecialty": "Pediatric",
+        "name": "Dr. Piyush Kumar Bansal",
+        "jobTitle": "Consultant Pediatrician",
+        "medicalSpecialty": "Pediatrics",
+        "knowsAbout": [
+          "Pediatrics",
+          "Child healthcare",
+          "Child clinic",
+          "Newborn & Infant Care",
+          "Immunization & Vaccination"
+        ],
+        "telephone": clinicData.doctors[0].phone,
         "hasMap": clinicData.mapUrl,
         "worksFor": {
           "@type": "MedicalClinic",
@@ -111,7 +151,15 @@ export default function RootLayout({
         "@type": "Physician",
         "@id": `${clinicData.seo.url}/#dr-manisha-bansal`,
         "name": "Dr. Manisha Bansal",
+        "jobTitle": "Consultant Physiotherapist",
         "medicalSpecialty": "Physiotherapy",
+        "knowsAbout": [
+          "Physiotherapy",
+          "Physical Rehabilitation",
+          "Pain Management",
+          "Orthopedic Physiotherapy"
+        ],
+        "telephone": clinicData.doctors[1].phone,
         "hasMap": clinicData.mapUrl,
         "worksFor": {
           "@type": "MedicalClinic",
