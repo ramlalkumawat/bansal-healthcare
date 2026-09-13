@@ -28,7 +28,7 @@ export default function FloatingWhatsAppWidget() {
   return (
     <div
       ref={widgetRef}
-      className="fixed right-4 bottom-20 z-40 md:hidden flex flex-col items-end pointer-events-auto"
+      className="fixed right-4 bottom-26 z-40 md:hidden flex flex-col items-end pointer-events-auto"
     >
       {/* Floating Doctor Chooser Popover */}
       <AnimatePresence>
