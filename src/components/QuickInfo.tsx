@@ -71,17 +71,17 @@ export default function QuickInfo() {
                 )}
               </div>
               <div className="space-y-1 text-left flex-1 min-w-0">
-                <span className="block text-[11px] font-bold text-text-muted uppercase tracking-wider">
+                <span className="block text-[12px] font-bold text-slate-600 uppercase tracking-wider">
                   {card.label}
                 </span>
-                <span className="block text-sm font-bold text-primary">
+                <span className="block text-[15px] font-bold text-primary">
                   {card.value}
                 </span>
-                <span className="block text-xs text-text-muted line-clamp-2">
+                <span className="block text-[13px] text-slate-600 line-clamp-2">
                   {card.description}
                 </span>
                 {card.actionText && (
-                  <span className="inline-block text-[11px] font-bold text-accent pt-1">
+                  <span className="inline-block text-[12px] font-bold text-teal-700 group-hover:text-teal-800 pt-1">
                     {card.actionText}
                   </span>
                 )}

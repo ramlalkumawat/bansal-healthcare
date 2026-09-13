@@ -93,7 +93,7 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
             {/* Supportive Subtext */}
             <motion.p
               variants={fadeInUp}
-              className="text-base sm:text-lg text-text-muted max-w-xl leading-relaxed"
+              className="text-[17px] sm:text-[19px] text-text-muted max-w-xl leading-relaxed font-normal"
             >
               Dr Bansal's Child & Physiotherapy Clinic in Jagatpura, Jaipur, providing professional healthcare services with convenient consultation hours for families.
             </motion.p>
@@ -101,7 +101,7 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
             {/* Location Indicators */}
             <motion.div
               variants={fadeInUp}
-              className="flex flex-wrap items-center gap-4 text-sm font-semibold text-text-dark"
+              className="flex flex-wrap items-center gap-4 text-[15px] font-semibold text-text-dark"
             >
               <a
                 href={clinicData.directionsUrl}
@@ -146,14 +146,14 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
           <div className="lg:col-span-5 w-full max-w-[460px] mx-auto flex flex-col space-y-3.5">
 
             {/* Top Info Bar: Location & Open Status (Clean, No Floating Overlap) */}
-            <div className="flex items-center justify-between px-1 text-xs">
+            <div className="flex items-center justify-between px-1 text-[13px]">
               <div className="flex items-center space-x-1.5 text-text-dark font-bold">
-                <MapPin className="w-3.5 h-3.5 text-accent shrink-0" />
+                <MapPin className="w-4 h-4 text-accent shrink-0" />
                 <span>Jagatpura, Jaipur</span>
                 <span className="text-text-muted font-normal">• Bansal Healthcare</span>
               </div>
-              <div className="flex items-center space-x-1 text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full text-[11px] font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <div className="flex items-center space-x-1 text-emerald-800 bg-emerald-50 border border-emerald-300/80 px-2.5 py-0.5 rounded-full text-[12px] font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                 <span>Open Daily</span>
               </div>
             </div>
@@ -183,12 +183,12 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
                       />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <span className={`block text-xs font-bold truncate ${
+                      <span className={`block text-[13px] font-bold truncate ${
                         isActive ? "text-white" : "text-primary"
                       }`}>
                         {index === 0 ? "Dr. Piyush" : "Dr. Manisha"}
                       </span>
-                      <span className={`block text-[10px] truncate ${
+                      <span className={`block text-[11px] font-medium truncate ${
                         isActive ? "text-emerald-200" : "text-text-muted"
                       }`}>
                         {doc.shortRole}
@@ -222,11 +222,11 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
 
                   {/* Top Badges (INSIDE card, perfectly framed) */}
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-black/50 backdrop-blur-md text-white border border-white/20 shadow-md">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-bold bg-black/60 backdrop-blur-md text-white border border-white/20 shadow-md">
                       <Sparkles className="w-3.5 h-3.5 text-accent mr-1.5" />
                       {currentDoc.experience}
                     </span>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-primary/90 backdrop-blur-md text-white shadow-md border border-white/15">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-bold bg-primary/95 backdrop-blur-md text-white shadow-md border border-white/15">
                       {currentDoc.badge}
                     </span>
                   </div>
@@ -234,17 +234,17 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
                   {/* Bottom Info Overlay (INSIDE card) */}
                   <div className="absolute bottom-0 left-0 right-0 p-5 z-10 text-white space-y-2.5 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-12">
                     <div className="space-y-0.5">
-                      <div className="flex items-center space-x-1.5 text-emerald-300 text-[11px] font-semibold">
+                      <div className="flex items-center space-x-1.5 text-emerald-300 text-[12px] font-semibold">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                         <span>Available for Consultation</span>
                       </div>
                       <h3 className="text-2xl font-extrabold tracking-tight text-white drop-shadow-sm">
                         {currentDoc.name}
                       </h3>
-                      <p className="text-xs font-semibold text-accent">
+                      <p className="text-[13px] font-semibold text-emerald-300">
                         {currentDoc.title} • {currentDoc.qualifications}
                       </p>
-                      <p className="text-[11px] text-white/75 font-light line-clamp-1">
+                      <p className="text-[12px] text-white/85 font-normal line-clamp-1">
                         {currentDoc.hospital}
                       </p>
                     </div>
@@ -253,13 +253,13 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
                       <button
                         type="button"
                         onClick={onOpenAppointment}
-                        className="flex-1 py-2.5 px-4 rounded-xl bg-accent hover:bg-accent/90 text-white text-xs font-bold text-center shadow-md transition-all cursor-pointer hover:shadow-lg"
+                        className="flex-1 py-2.5 px-4 rounded-xl bg-accent hover:bg-accent/90 text-white text-[13px] font-bold text-center shadow-md transition-all cursor-pointer hover:shadow-lg"
                       >
                         Book Appointment
                       </button>
                       <Link
                         href={`/doctor/${currentDoc.id}`}
-                        className="py-2.5 px-3.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 text-white text-xs font-bold text-center transition-all flex items-center justify-center space-x-1 cursor-pointer"
+                        className="py-2.5 px-3.5 rounded-xl bg-white/20 hover:bg-white/30 border border-white/25 text-white text-[13px] font-bold text-center transition-all flex items-center justify-center space-x-1 cursor-pointer"
                       >
                         <span>Profile</span>
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -271,7 +271,7 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
             </div>
 
             {/* Bottom Clean Trust Strip (Integrated, No Overlap) */}
-            <div className="flex items-center justify-between px-2 pt-0.5 text-[11px] text-text-muted font-medium">
+            <div className="flex items-center justify-between px-2 pt-0.5 text-[12px] text-text-muted font-semibold">
               <span className="flex items-center space-x-1">
                 <ShieldPlus className="w-3.5 h-3.5 text-secondary shrink-0" />
                 <span>Verified Specialists</span>

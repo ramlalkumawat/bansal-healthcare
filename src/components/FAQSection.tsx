@@ -22,13 +22,13 @@ export default function FAQSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold tracking-widest text-accent uppercase block">
+          <span className="text-[13px] font-bold tracking-wider text-teal-700 uppercase block">
             Common Inquiries
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm text-text-muted">
+          <p className="text-[15px] text-slate-600">
             Got questions about timings, doctors, or the clinic's location? Find quick answers below.
           </p>
         </div>
@@ -51,12 +51,12 @@ export default function FAQSection() {
                 >
                   <div className="flex items-center space-x-3 pr-4">
                     <HelpCircle className="w-5 h-5 text-secondary shrink-0" />
-                    <span className="text-sm sm:text-base leading-tight">{faq.question}</span>
+                    <span className="text-[15px] sm:text-[17px] leading-tight">{faq.question}</span>
                   </div>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="text-text-muted hover:text-accent p-1 bg-bg-light rounded-lg shrink-0"
+                    className="text-slate-600 hover:text-accent p-1 bg-bg-light rounded-lg shrink-0"
                   >
                     <ChevronDown className="w-4 h-4" />
                   </motion.div>
@@ -72,7 +72,7 @@ export default function FAQSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                     >
-                      <div className="px-6 pb-6 text-sm text-text-muted leading-relaxed border-t border-border-light pt-4 bg-bg-light/25 whitespace-pre-line">
+                      <div className="px-6 pb-6 text-[15px] text-slate-600 leading-relaxed border-t border-border-light pt-4 bg-bg-light/25 whitespace-pre-line font-normal">
                         {faq.answer}
                       </div>
                     </motion.div>

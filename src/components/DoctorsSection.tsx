@@ -18,13 +18,13 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold tracking-widest text-accent uppercase block">
+          <span className="text-[13px] font-bold tracking-wider text-teal-700 uppercase block">
             Our Medical Team
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
             Consult Qualified Specialists
           </h2>
-          <p className="text-sm text-text-muted">
+          <p className="text-[15px] text-slate-600">
             Meet the Primary medical consultants at Dr Bansal's Child & Physiotherapy Clinic.
           </p>
         </div>
@@ -71,11 +71,11 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                   
                   {/* Overlay Title & Doctor Name */}
                   <div className="absolute bottom-5 left-5 right-5 text-white z-30 space-y-1.5">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-accent text-white uppercase tracking-wider shadow-sm">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-accent text-white uppercase tracking-wider shadow-sm">
                       {doctor.details?.experienceYears || "Specialist"} Years Clinical Experience
                     </span>
                     <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight drop-shadow-md">{doctor.name}</h3>
-                    <p className="text-xs sm:text-sm font-semibold text-emerald-300 uppercase tracking-wide">
+                    <p className="text-[13px] sm:text-[15px] font-semibold text-emerald-300 uppercase tracking-wide">
                       {doctor.title} • {doctor.qualifications}
                     </p>
                   </div>
@@ -86,37 +86,37 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                   <div className="space-y-4">
                     {/* Qualifications */}
                     <div>
-                      <span className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-1">
+                      <span className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1">
                         Qualifications & Association
                       </span>
-                      <p className="text-sm font-semibold text-text-dark">
+                      <p className="text-[15px] font-semibold text-text-dark">
                         {doctor.qualifications}
                       </p>
                     </div>
 
                     {/* Availability Note */}
                     <div>
-                      <span className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-1">
+                      <span className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1">
                         Consultation Focus
                       </span>
-                      <p className="text-xs font-medium text-text-muted leading-relaxed">
+                      <p className="text-[13px] font-medium text-slate-600 leading-relaxed">
                         {doctor.availabilityNote}
                       </p>
                     </div>
 
                     {/* Quick Schedule Overview */}
                     <div className="bg-bg-light/65 border border-border-light p-3.5 rounded-xl">
-                      <span className="block text-[9px] font-bold text-text-muted uppercase tracking-wider mb-1.5">
+                      <span className="block text-[10px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
                         Consultation Slots
                       </span>
-                      <div className="grid grid-cols-2 gap-2 text-xs font-semibold text-text-dark">
+                      <div className="grid grid-cols-2 gap-2 text-[13px] font-semibold text-text-dark">
                         <div>
-                          <span className="block text-[10px] text-text-muted font-medium">Mon – Sat:</span>
-                          <span className="text-[11px]">{doctor.schedule.weekdays[0]} (+more)</span>
+                          <span className="block text-[11px] text-slate-600 font-medium">Mon – Sat:</span>
+                          <span className="text-[12px]">{doctor.schedule.weekdays[0]} (+more)</span>
                         </div>
                         <div>
-                          <span className="block text-[10px] text-text-muted font-medium">Sunday:</span>
-                          <span className="text-[11px]">{doctor.schedule.sunday[0]}</span>
+                          <span className="block text-[11px] text-slate-600 font-medium">Sunday:</span>
+                          <span className="text-[12px]">{doctor.schedule.sunday[0]}</span>
                         </div>
                       </div>
                     </div>
@@ -127,7 +127,7 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                     <Link
                       href={`/doctor/${doctor.id}`}
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center justify-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary/5 font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
+                      className="inline-flex items-center justify-center py-2.5 px-3 rounded-xl border border-primary text-primary hover:bg-primary/5 font-bold text-[13px] shadow-sm transition-all active:scale-[0.98] cursor-pointer"
                     >
                       <User className="w-3.5 h-3.5 mr-1.5 shrink-0" />
                       View Profile
@@ -137,7 +137,7 @@ export default function DoctorsSection({ onOpenAppointment }: DoctorsSectionProp
                         e.stopPropagation();
                         onOpenAppointment(doctor.id);
                       }}
-                      className="inline-flex items-center justify-center py-2.5 px-3 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
+                      className="inline-flex items-center justify-center py-2.5 px-3 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[13px] shadow-sm transition-all active:scale-[0.98] cursor-pointer"
                     >
                       <Calendar className="w-3.5 h-3.5 mr-1.5 shrink-0" />
                       Book Slot

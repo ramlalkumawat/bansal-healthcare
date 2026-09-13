@@ -158,13 +158,13 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                 </div>
                 
                 <div className="space-y-3 text-center md:text-left flex-1 pt-2">
-                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-accent/15 text-accent uppercase tracking-wider">
+                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[13px] font-bold bg-accent/15 text-accent uppercase tracking-wider">
                     {doctor.details?.experienceYears} Years Clinical Experience
                   </span>
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">{doctor.name}</h1>
                   <p className="text-base sm:text-xl font-bold text-secondary uppercase tracking-wider">{doctor.title}</p>
-                  <p className="text-sm sm:text-base font-semibold text-text-muted">{doctor.qualifications}</p>
-                  <p className="text-xs sm:text-sm text-text-muted/90 pt-1 font-medium">{doctor.availabilityNote}</p>
+                  <p className="text-[15px] sm:text-[17px] font-semibold text-slate-600">{doctor.qualifications}</p>
+                  <p className="text-[13px] sm:text-[15px] text-slate-600 pt-1 font-medium">{doctor.availabilityNote}</p>
                 </div>
               </div>
 
@@ -172,14 +172,14 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
               <div className="flex flex-row md:flex-col lg:flex-row gap-3 mt-4 md:mt-0 shrink-0">
                 <a
                   href={`tel:${doctorPhone}`}
-                  className="flex-1 md:flex-initial inline-flex items-center justify-center px-5 py-3 rounded-xl border border-border-light text-text-dark bg-white hover:bg-bg-light font-bold text-xs shadow-sm transition-all active:scale-[0.98] cursor-pointer"
+                  className="flex-1 md:flex-initial inline-flex items-center justify-center px-5 py-3 rounded-xl border border-border-light text-text-dark bg-white hover:bg-bg-light font-bold text-[13px] shadow-sm transition-all active:scale-[0.98] cursor-pointer"
                 >
                   <Phone className="w-4 h-4 mr-2 text-secondary" />
                   Call Doctor
                 </a>
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="flex-1 md:flex-initial inline-flex items-center justify-center px-5 py-3 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-xs shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                  className="flex-1 md:flex-initial inline-flex items-center justify-center px-5 py-3 rounded-xl bg-primary text-white hover:bg-secondary font-bold text-[13px] shadow-md transition-all active:scale-[0.98] cursor-pointer"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
                   Book Appointment
@@ -202,7 +202,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                   About {isPiyush ? "Dr. Piyush Bansal" : "Dr. Manisha Bansal"}
                 </h2>
                 <hr className="border-border-light" />
-                <p className="text-sm sm:text-base text-text-muted leading-relaxed">
+                <p className="text-[15px] sm:text-[17px] text-slate-600 leading-relaxed font-normal">
                   {doctor.details?.aboutText}
                 </p>
               </section>

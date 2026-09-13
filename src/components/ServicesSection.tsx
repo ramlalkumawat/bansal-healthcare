@@ -19,13 +19,13 @@ export default function ServicesSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold tracking-widest text-accent uppercase block">
+          <span className="text-[13px] font-bold tracking-wider text-teal-700 uppercase block">
             Clinic Offerings
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
             Specialized Healthcare Services
           </h2>
-          <p className="text-sm text-text-muted">
+          <p className="text-[15px] text-slate-600">
             We provide core medical services matching our practitioner qualifications.
           </p>
         </div>
@@ -57,10 +57,10 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Service Details */}
-                <h3 className="text-lg font-bold text-emerald-950 mb-3 group-hover:text-emerald-800 transition-colors">
+                <h3 className="text-[19px] font-bold text-emerald-950 mb-3 group-hover:text-emerald-800 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-sm text-emerald-900/80 leading-relaxed flex-1 font-medium">
+                <p className="text-[15px] text-emerald-950/90 leading-relaxed flex-1 font-medium">
                   {service.description}
                 </p>
               </div>

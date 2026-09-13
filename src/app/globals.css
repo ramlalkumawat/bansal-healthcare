@@ -10,10 +10,10 @@
   --color-foreground: var(--foreground);
   --color-primary: #0B3B4A;
   --color-secondary: #0F766E;
-  --color-accent: #20A39E;
+  --color-accent: #0D9488;
   --color-bg-light: #F7FBFC;
-  --color-text-dark: #102A33;
-  --color-text-muted: #64748B;
+  --color-text-dark: #0F232B;
+  --color-text-muted: #475569;
   --color-border-light: #DCE8EC;
   
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;

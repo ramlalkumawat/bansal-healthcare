@@ -10,13 +10,13 @@ export default function TimingsSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <span className="text-xs font-bold tracking-widest text-accent uppercase block">
+          <span className="text-[13px] font-bold tracking-wider text-teal-700 uppercase block">
             Clinic Schedule
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
             Consultation Hours
           </h2>
-          <p className="text-sm text-text-muted">
+          <p className="text-[15px] text-slate-600">
             Separate timings are maintained for child care, physiotherapy, and general consultations.
           </p>
         </div>
@@ -24,9 +24,9 @@ export default function TimingsSection() {
         {/* Warning Indicator Banner */}
         <div className="max-w-4xl mx-auto mb-10 bg-amber-50 border border-amber-250 p-4 rounded-2xl flex items-start space-x-3 text-amber-900 shadow-sm">
           <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-          <div className="space-y-1 text-sm">
+          <div className="space-y-1 text-[15px]">
             <span className="font-bold">Important Notice:</span>
-            <span className="ml-1 text-amber-800">
+            <span className="ml-1 text-amber-900 font-medium">
               {clinicData.timingsNote} Consultation availability may vary due to medical emergencies or holiday schedules.
             </span>
           </div>
@@ -49,7 +49,7 @@ export default function TimingsSection() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold tracking-tight">{doctor.name}</h3>
-                    <p className="text-xs text-white/70 font-semibold uppercase tracking-wider mt-0.5">
+                    <p className="text-[13px] text-emerald-200 font-semibold uppercase tracking-wider mt-0.5">
                       {isPiyush ? "Pediatrics & Medicine" : "Physiotherapy & General"}
                     </p>
                   </div>
@@ -60,14 +60,14 @@ export default function TimingsSection() {
                   {/* Monday - Saturday */}
                   <div className="space-y-2.5">
                     <div className="flex items-center space-x-2 border-b border-border-light pb-2">
-                      <span className="text-sm font-bold text-primary">Monday – Saturday</span>
-                      <span className="text-[10px] bg-secondary/10 text-secondary px-2 py-0.5 rounded-full font-bold">
+                      <span className="text-[15px] font-bold text-primary">Monday – Saturday</span>
+                      <span className="text-[11px] bg-secondary/10 text-secondary px-2 py-0.5 rounded-full font-bold">
                         6 Days a week
                       </span>
                     </div>
                     <ul className="space-y-2">
                       {doctor.schedule.weekdays.map((slot, idx) => (
-                        <li key={idx} className="flex items-center text-sm font-semibold text-text-dark space-x-3">
+                        <li key={idx} className="flex items-center text-[15px] font-semibold text-text-dark space-x-3">
                           <Clock className="w-4 h-4 text-accent shrink-0" />
                           <span>{slot}</span>
                         </li>
