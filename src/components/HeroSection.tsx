@@ -272,7 +272,7 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
             {/* Bottom Clean Trust Strip (Single Clean Line) */}
             <div className="flex items-center justify-center space-x-1.5 py-1 text-[12px] text-slate-600 font-semibold whitespace-nowrap">
               <ShieldPlus className="w-3.5 h-3.5 text-secondary shrink-0" />
-              <span>Verified Medical Specialists • Jagatpura</span>
+              <span>Verified Medical Specialists</span>
             </div>
 
           </div>
