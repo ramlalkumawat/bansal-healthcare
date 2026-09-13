@@ -295,7 +295,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                   {/* Actions for Clients to Rate / Give Feedback */}
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                     <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                      Aapka feedback hamare liye bohot zaroori hai! Doctor ko Google par 5-star rating aur review dekar apna anubhav share karein:
+                      Your feedback matters to us! Share your consultation experience by rating and reviewing the doctor on Google:
                     </p>
 
                     <div className="flex items-center gap-2.5 shrink-0">
