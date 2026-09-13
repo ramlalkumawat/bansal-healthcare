@@ -105,8 +105,8 @@ export const clinicData = {
       qualifications: "BPT, MIAP, DNHE",
       title: "Consultant Physiotherapist",
       availabilityNote: "Available for Physiotherapy and Rehabilitation care",
-      phone: "+919214678687",
-      whatsapp: "+919214678687",
+      phone: "+919057209819",
+      whatsapp: "+919057209819",
       schedule: {
         weekdays: [
           "09:00 AM – 01:00 PM",

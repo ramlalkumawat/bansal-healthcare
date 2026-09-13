@@ -409,6 +409,13 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                     <MessageSquare className="w-3.5 h-3.5 mr-2 text-emerald-400" />
                     Consult on WhatsApp
                   </a>
+                  <a
+                    href={`tel:${doctorPhone}`}
+                    className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl border border-white/20 text-white hover:bg-white/5 font-bold text-xs transition-all active:scale-[0.98] cursor-pointer"
+                  >
+                    <Phone className="w-3.5 h-3.5 mr-2 text-emerald-400" />
+                    Call: {doctorPhone}
+                  </a>
                 </div>
               </div>
 
