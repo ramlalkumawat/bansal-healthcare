@@ -300,7 +300,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
 
                     <div className="flex items-center gap-2.5 shrink-0">
                       <a
-                        href={doctor.googleReviewUrl || doctor.googleBusinessUrl}
+                        href={doctor.googleBusinessUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center py-2.5 px-4 rounded-xl bg-accent hover:bg-secondary text-white font-bold text-xs shadow-md transition-all active:scale-[0.98] cursor-pointer"
@@ -550,7 +550,7 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                     Have you visited {doctor.name}? Share your feedback and rate on Google.
                   </p>
                   <a
-                    href={doctor.googleReviewUrl || doctor.googleBusinessUrl}
+                    href={doctor.googleBusinessUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-950 font-bold text-xs shadow-2xs transition-all active:scale-[0.98] cursor-pointer"
