@@ -16,6 +16,7 @@ export interface Doctor {
   phone?: string;
   whatsapp?: string;
   googleBusinessUrl?: string;
+  googleReviewUrl?: string;
   rating?: {
     score: number;
     reviewCount: number;
@@ -73,6 +74,7 @@ export const clinicData = {
       phone: "+919214678687",
       whatsapp: "+919214678687",
       googleBusinessUrl: "https://share.google/CtLdjRTL6v4aJURMi",
+      googleReviewUrl: "https://www.google.com/search?q=Dr+Piyush+Bansal&kgmid=/g/11rt_pz6bt#lrd=0x0:0xf3d58d77bdfcebb4,3",
       rating: {
         score: 5.0,
         reviewCount: 48,
@@ -120,6 +122,7 @@ export const clinicData = {
       phone: "+919057209819",
       whatsapp: "+919057209819",
       googleBusinessUrl: "https://share.google/USmUvytjAGkmxe9cr",
+      googleReviewUrl: "https://www.google.com/search?q=Dr.Manisha+Bansal+physiotherapy+clinic&kgmid=/g/11jzgg5457#lrd=0x0:0x77c04609c2133ba1,3",
       rating: {
         score: 5.0,
         reviewCount: 36,
