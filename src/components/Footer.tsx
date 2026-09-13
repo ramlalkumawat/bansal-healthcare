@@ -123,47 +123,16 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="space-y-3 border-t border-white/5 pt-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-accent">
-                Direct Doctor Contacts
-              </h4>
-              <ul className="space-y-2 text-xs font-semibold text-white/85">
-                <li>
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-white/70">Dr. Piyush Bansal:</span>
-                    <a
-                      href="tel:+919214678687"
-                      className="inline-flex items-center space-x-1 text-accent hover:underline font-bold"
-                    >
-                      <Phone className="w-3 h-3" />
-                      <span>+91 92146 78687</span>
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-white/70">Dr. Manisha Bansal:</span>
-                    <a
-                      href="tel:+919057209819"
-                      className="inline-flex items-center space-x-1 text-accent hover:underline font-bold"
-                    >
-                      <Phone className="w-3 h-3" />
-                      <span>+91 90572 09819</span>
-                    </a>
-                  </div>
-                </li>
-                <li className="pt-1">
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 text-emerald-300 hover:text-white transition-colors"
-                  >
-                    <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>WhatsApp Clinic Consultation</span>
-                  </a>
-                </li>
-              </ul>
+            <div className="border-t border-white/5 pt-3">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 text-xs font-semibold text-emerald-300 hover:text-white transition-colors"
+              >
+                <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+                <span>WhatsApp Clinic Consultation</span>
+              </a>
             </div>
           </div>
 
