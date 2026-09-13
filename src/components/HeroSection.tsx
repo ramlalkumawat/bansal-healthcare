@@ -39,7 +39,6 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
   ];
 
   const currentDoc = heroDoctors[activeDoctor];
-  const otherDoc = heroDoctors[activeDoctor === 0 ? 1 : 0];
 
   // Animation configurations
   const fadeInUp = {
@@ -144,46 +143,71 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
           </motion.div>
 
           {/* Right Image/Visual Grid (5 columns on desktop) */}
-          <div className="lg:col-span-5 relative flex flex-col items-center w-full max-w-[460px] mx-auto">
+          <div className="lg:col-span-5 w-full max-w-[460px] mx-auto flex flex-col space-y-3.5">
 
-            {/* Doctor Switcher Tabs */}
-            <div className="flex items-center p-1.5 bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-border-light mb-4 w-full justify-between gap-1 z-20">
-              <button
-                type="button"
-                onClick={() => setActiveDoctor(0)}
-                className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center space-x-1.5 cursor-pointer ${
-                  activeDoctor === 0
-                    ? "bg-primary text-white shadow-md"
-                    : "text-text-muted hover:text-primary hover:bg-primary/5"
-                }`}
-              >
-                <Stethoscope className="w-3.5 h-3.5 shrink-0" />
-                <span className="truncate">Dr. Piyush (Child)</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setActiveDoctor(1)}
-                className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center space-x-1.5 cursor-pointer ${
-                  activeDoctor === 1
-                    ? "bg-primary text-white shadow-md"
-                    : "text-text-muted hover:text-primary hover:bg-primary/5"
-                }`}
-              >
-                <Activity className="w-3.5 h-3.5 shrink-0" />
-                <span className="truncate">Dr. Manisha (Physio)</span>
-              </button>
+            {/* Top Info Bar: Location & Open Status (Clean, No Floating Overlap) */}
+            <div className="flex items-center justify-between px-1 text-xs">
+              <div className="flex items-center space-x-1.5 text-text-dark font-bold">
+                <MapPin className="w-3.5 h-3.5 text-accent shrink-0" />
+                <span>Jagatpura, Jaipur</span>
+                <span className="text-text-muted font-normal">• Bansal Healthcare</span>
+              </div>
+              <div className="flex items-center space-x-1 text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full text-[11px] font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Open Daily</span>
+              </div>
             </div>
 
-            {/* Main Interactive Doctor Card Container */}
-            <div className="relative w-full aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white bg-slate-900 group">
+            {/* Doctor Switcher Tabs with Mini Avatars */}
+            <div className="bg-white/95 backdrop-blur-md p-1.5 rounded-2xl shadow-sm border border-border-light grid grid-cols-2 gap-1.5 z-10">
+              {heroDoctors.map((doc, index) => {
+                const isActive = activeDoctor === index;
+                return (
+                  <button
+                    key={doc.id}
+                    type="button"
+                    onClick={() => setActiveDoctor(index)}
+                    className={`flex items-center space-x-2.5 p-2 rounded-xl transition-all duration-200 text-left cursor-pointer ${
+                      isActive
+                        ? "bg-primary text-white shadow-md"
+                        : "hover:bg-slate-100 text-text-dark"
+                    }`}
+                  >
+                    <div className={`w-9 h-9 rounded-lg overflow-hidden shrink-0 border ${
+                      isActive ? "border-white/40" : "border-border-light"
+                    }`}>
+                      <img
+                        src={doc.image}
+                        alt={doc.name}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <span className={`block text-xs font-bold truncate ${
+                        isActive ? "text-white" : "text-primary"
+                      }`}>
+                        {index === 0 ? "Dr. Piyush" : "Dr. Manisha"}
+                      </span>
+                      <span className={`block text-[10px] truncate ${
+                        isActive ? "text-emerald-200" : "text-text-muted"
+                      }`}>
+                        {doc.shortRole}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Main Interactive Doctor Card */}
+            <div className="relative w-full aspect-[4/5] rounded-[28px] overflow-hidden shadow-2xl border-4 border-white bg-slate-950 group">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentDoc.id}
-                  initial={{ opacity: 0, scale: 0.98 }}
+                  initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.02 }}
-                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="relative w-full h-full"
                 >
                   {/* Doctor Real Photo */}
@@ -193,51 +217,49 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
                     className="w-full h-full object-cover object-top filter brightness-[0.98] transition-transform duration-700 group-hover:scale-105"
                   />
 
-                  {/* Gradient overlays for readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-slate-950/20 pointer-events-none" />
+                  {/* Gradient overlays for contrast and readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
 
-                  {/* Top Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white/90 backdrop-blur-md text-primary shadow-md border border-white/60">
+                  {/* Top Badges (INSIDE card, perfectly framed) */}
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-black/50 backdrop-blur-md text-white border border-white/20 shadow-md">
                       <Sparkles className="w-3.5 h-3.5 text-accent mr-1.5" />
                       {currentDoc.experience}
                     </span>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary/85 backdrop-blur-md text-white shadow-md">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-primary/90 backdrop-blur-md text-white shadow-md border border-white/15">
                       {currentDoc.badge}
                     </span>
                   </div>
 
-                  {/* Bottom Info Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-10 text-white space-y-3 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-12">
-                    <div className="space-y-1">
-                      <div className="flex items-center space-x-2">
+                  {/* Bottom Info Overlay (INSIDE card) */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 z-10 text-white space-y-2.5 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-12">
+                    <div className="space-y-0.5">
+                      <div className="flex items-center space-x-1.5 text-emerald-300 text-[11px] font-semibold">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span className="text-[11px] font-semibold text-emerald-300 uppercase tracking-wider">
-                          Consultation Available
-                        </span>
+                        <span>Available for Consultation</span>
                       </div>
-                      <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white drop-shadow-sm">
+                      <h3 className="text-2xl font-extrabold tracking-tight text-white drop-shadow-sm">
                         {currentDoc.name}
                       </h3>
-                      <p className="text-xs sm:text-sm font-semibold text-accent">
+                      <p className="text-xs font-semibold text-accent">
                         {currentDoc.title} • {currentDoc.qualifications}
                       </p>
-                      <p className="text-xs text-white/75 font-light leading-relaxed pt-0.5">
+                      <p className="text-[11px] text-white/75 font-light line-clamp-1">
                         {currentDoc.hospital}
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3 pt-2">
+                    <div className="flex items-center gap-2.5 pt-1">
                       <button
                         type="button"
                         onClick={onOpenAppointment}
-                        className="flex-1 py-2.5 px-4 rounded-xl bg-accent hover:bg-accent/90 text-white text-xs font-bold text-center shadow-lg transition-all cursor-pointer hover:shadow-xl"
+                        className="flex-1 py-2.5 px-4 rounded-xl bg-accent hover:bg-accent/90 text-white text-xs font-bold text-center shadow-md transition-all cursor-pointer hover:shadow-lg"
                       >
                         Book Appointment
                       </button>
                       <Link
                         href={`/doctor/${currentDoc.id}`}
-                        className="py-2.5 px-4 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 text-white text-xs font-bold text-center transition-all flex items-center justify-center space-x-1 cursor-pointer"
+                        className="py-2.5 px-3.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 text-white text-xs font-bold text-center transition-all flex items-center justify-center space-x-1 cursor-pointer"
                       >
                         <span>Profile</span>
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -248,51 +270,23 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
               </AnimatePresence>
             </div>
 
-            {/* Overlapping Floating Secondary Doctor Mini-Card */}
-            <motion.button
-              type="button"
-              onClick={() => setActiveDoctor(activeDoctor === 0 ? 1 : 0)}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              className="absolute -bottom-6 -left-3 sm:-left-6 z-30 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-xl border border-border-light flex items-center space-x-3 cursor-pointer hover:shadow-2xl transition-all max-w-[260px] text-left group"
-            >
-              <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border-2 border-accent/40">
-                <img
-                  src={otherDoc.image}
-                  alt={otherDoc.name}
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <div className="min-w-0 pr-1">
-                <span className="block text-[10px] font-bold text-accent uppercase tracking-wider">
-                  Also At Clinic
-                </span>
-                <span className="block text-xs font-extrabold text-primary truncate">
-                  {otherDoc.name}
-                </span>
-                <span className="block text-[11px] text-text-muted truncate">
-                  {otherDoc.shortRole} • Click to switch
-                </span>
-              </div>
-            </motion.button>
-
-            {/* Subtle Floating Verified Badge (Top-Right) */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
-              className="absolute -top-3 -right-3 sm:-right-5 z-30 bg-white/95 backdrop-blur-md shadow-lg border border-border-light py-2 px-3.5 rounded-2xl flex items-center space-x-2"
-            >
-              <ShieldPlus className="w-4 h-4 text-secondary" />
-              <div className="text-left">
-                <p className="text-[11px] font-bold text-primary leading-tight">
-                  Jagatpura, Jaipur
-                </p>
-                <p className="text-[9px] text-text-muted">
-                  Bansal Healthcare Clinic
-                </p>
-              </div>
-            </motion.div>
+            {/* Bottom Clean Trust Strip (Integrated, No Overlap) */}
+            <div className="flex items-center justify-between px-2 pt-0.5 text-[11px] text-text-muted font-medium">
+              <span className="flex items-center space-x-1">
+                <ShieldPlus className="w-3.5 h-3.5 text-secondary shrink-0" />
+                <span>Verified Specialists</span>
+              </span>
+              <span>•</span>
+              <span>Morning &amp; Evening</span>
+              <span>•</span>
+              <button
+                type="button"
+                onClick={() => setActiveDoctor(activeDoctor === 0 ? 1 : 0)}
+                className="text-accent font-bold hover:underline cursor-pointer"
+              >
+                Switch Doctor ⇄
+              </button>
+            </div>
 
           </div>
         </div>
