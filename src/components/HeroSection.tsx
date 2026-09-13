@@ -226,26 +226,21 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
                     className="w-full h-full object-cover object-top filter brightness-[0.98] transition-transform duration-700 group-hover:scale-105"
                   />
 
-                  {/* Gradient overlays for contrast and readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
+                  {/* Gradient overlay for bottom text contrast only, leaving top face completely clear */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent pointer-events-none" />
 
-                  {/* Top Badges (INSIDE card, perfectly framed) */}
-                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-bold bg-black/60 backdrop-blur-md text-white border border-white/20 shadow-md">
-                      <Sparkles className="w-3.5 h-3.5 text-accent mr-1.5" />
-                      {currentDoc.experience}
-                    </span>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-bold bg-primary/95 backdrop-blur-md text-white shadow-md border border-white/15">
-                      {currentDoc.badge}
-                    </span>
-                  </div>
-
-                  {/* Bottom Info Overlay (INSIDE card) */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 z-10 text-white space-y-2.5 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-12">
-                    <div className="space-y-0.5">
-                      <div className="flex items-center space-x-1.5 text-emerald-300 text-[12px] font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span>Available for Consultation</span>
+                  {/* Bottom Info Overlay (INSIDE card - keeps top of photo 100% clear for face) */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 z-10 text-white space-y-2 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-14">
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between flex-wrap gap-1.5">
+                        <div className="flex items-center space-x-1.5 text-emerald-300 text-[12px] font-semibold">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                          <span>Available for Consultation</span>
+                        </div>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/15 backdrop-blur-md text-emerald-200 border border-white/25 shadow-xs">
+                          <Sparkles className="w-3 h-3 text-accent mr-1" />
+                          {currentDoc.experience}
+                        </span>
                       </div>
                       <h3 className="text-2xl font-extrabold tracking-tight text-white drop-shadow-sm">
                         {currentDoc.name}
