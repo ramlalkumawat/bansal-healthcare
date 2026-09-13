@@ -2,15 +2,12 @@
 
 import Link from "next/link";
 import { clinicData } from "@/data/clinic";
-import { ArrowUpRight, Phone, MessageSquare } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 
 export default function Footer() {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  const cleanedPhone = clinicData.whatsapp.replace(/[^0-9]/g, "");
-  const whatsappUrl = `https://wa.me/${cleanedPhone}?text=Hello%20Dr%20Bansal's%20Clinic,%20I'd%20like%20to%20inquire%20about%20booking%20an%20appointment.`;
 
   return (
     <footer className="bg-[#071F26] text-white pt-16 pb-24 md:pb-8 border-t border-white/5 text-left">
@@ -121,18 +118,6 @@ export default function Footer() {
                   <ArrowUpRight className="w-3 h-3 ml-0.5" />
                 </a>
               </div>
-            </div>
-
-            <div className="border-t border-white/5 pt-3">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 text-xs font-semibold text-emerald-300 hover:text-white transition-colors"
-              >
-                <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                <span>WhatsApp Clinic Consultation</span>
-              </a>
             </div>
           </div>
 
