@@ -147,14 +147,24 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
 
             {/* Top Info Bar: Location & Open Status (Single clean line) */}
             <div className="flex items-center justify-between px-1 text-[13px] whitespace-nowrap">
-              <div className="flex items-center space-x-1.5 text-text-dark font-bold">
+              <a
+                href={clinicData.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View location on Google Maps"
+                className="flex items-center space-x-1.5 text-text-dark hover:text-primary font-bold transition-colors cursor-pointer"
+              >
                 <MapPin className="w-4 h-4 text-accent shrink-0" />
                 <span>Jagatpura, Jaipur</span>
-              </div>
-              <div className="flex items-center space-x-1.5 text-emerald-800 bg-emerald-50 border border-emerald-300/80 px-2.5 py-0.5 rounded-full text-[12px] font-bold shrink-0">
+              </a>
+              <a
+                href="#timings"
+                title="View Consultation Timings & Schedule"
+                className="flex items-center space-x-1.5 text-emerald-800 hover:text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300/80 hover:border-emerald-400 px-2.5 py-0.5 rounded-full text-[12px] font-bold shrink-0 transition-all cursor-pointer shadow-xs active:scale-95"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                 <span>Open Daily</span>
-              </div>
+              </a>
             </div>
 
             {/* Doctor Switcher Tabs with Mini Avatars */}
