@@ -20,6 +20,7 @@ export default function QuickInfo() {
       label: "Child Healthcare",
       value: "Dr. Piyush Bansal",
       icon: User,
+      avatarImage: "/images/dr_piyush_bansal.jpg",
       colorClass: "text-primary bg-primary/10",
       description: "MBBS, DCH, MIAP",
       href: "/doctor/dr-piyush-bansal",
@@ -30,7 +31,7 @@ export default function QuickInfo() {
       label: "Physiotherapy",
       value: "Dr. Manisha Bansal",
       icon: Activity,
-      iconImage: "/images/physiotherapy_badge_green.png",
+      avatarImage: "/images/dr_manisha_bansal.jpg",
       colorClass: "text-secondary bg-secondary/10",
       description: "BPT, MIAP, DNHE",
       href: "/doctor/dr-manisha-bansal",
@@ -56,8 +57,14 @@ export default function QuickInfo() {
           const Icon = card.icon;
           const CardContent = (
             <>
-              <div className={`p-3 rounded-xl shrink-0 flex items-center justify-center ${card.colorClass}`}>
-                {"iconImage" in card && card.iconImage ? (
+              <div className={`p-2 sm:p-2.5 rounded-2xl shrink-0 flex items-center justify-center overflow-hidden ${card.colorClass}`}>
+                {"avatarImage" in card && card.avatarImage ? (
+                  <img
+                    src={card.avatarImage as string}
+                    alt={card.value}
+                    className="w-10 h-10 rounded-xl object-cover object-top ring-2 ring-primary/20"
+                  />
+                ) : "iconImage" in card && card.iconImage ? (
                   <img src={card.iconImage as string} alt={card.label} className="w-6 h-6 object-contain" />
                 ) : (
                   <Icon className="w-5 h-5" />
