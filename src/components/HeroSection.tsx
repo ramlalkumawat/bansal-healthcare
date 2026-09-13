@@ -145,14 +145,13 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
           {/* Right Image/Visual Grid (5 columns on desktop) */}
           <div className="lg:col-span-5 w-full max-w-[460px] mx-auto flex flex-col space-y-3.5">
 
-            {/* Top Info Bar: Location & Open Status (Clean, No Floating Overlap) */}
-            <div className="flex items-center justify-between px-1 text-[13px]">
+            {/* Top Info Bar: Location & Open Status (Single clean line) */}
+            <div className="flex items-center justify-between px-1 text-[13px] whitespace-nowrap">
               <div className="flex items-center space-x-1.5 text-text-dark font-bold">
                 <MapPin className="w-4 h-4 text-accent shrink-0" />
                 <span>Jagatpura, Jaipur</span>
-                <span className="text-text-muted font-normal">• Bansal Healthcare</span>
               </div>
-              <div className="flex items-center space-x-1 text-emerald-800 bg-emerald-50 border border-emerald-300/80 px-2.5 py-0.5 rounded-full text-[12px] font-bold">
+              <div className="flex items-center space-x-1.5 text-emerald-800 bg-emerald-50 border border-emerald-300/80 px-2.5 py-0.5 rounded-full text-[12px] font-bold shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                 <span>Open Daily</span>
               </div>
@@ -270,22 +269,10 @@ export default function HeroSection({ onOpenAppointment }: HeroSectionProps) {
               </AnimatePresence>
             </div>
 
-            {/* Bottom Clean Trust Strip (Integrated, No Overlap) */}
-            <div className="flex items-center justify-between px-2 pt-0.5 text-[12px] text-text-muted font-semibold">
-              <span className="flex items-center space-x-1">
-                <ShieldPlus className="w-3.5 h-3.5 text-secondary shrink-0" />
-                <span>Verified Specialists</span>
-              </span>
-              <span>•</span>
-              <span>Morning &amp; Evening</span>
-              <span>•</span>
-              <button
-                type="button"
-                onClick={() => setActiveDoctor(activeDoctor === 0 ? 1 : 0)}
-                className="text-accent font-bold hover:underline cursor-pointer"
-              >
-                Switch Doctor ⇄
-              </button>
+            {/* Bottom Clean Trust Strip (Single Clean Line) */}
+            <div className="flex items-center justify-center space-x-1.5 py-1 text-[12px] text-slate-600 font-semibold whitespace-nowrap">
+              <ShieldPlus className="w-3.5 h-3.5 text-secondary shrink-0" />
+              <span>Verified Medical Specialists • Jagatpura</span>
             </div>
 
           </div>
