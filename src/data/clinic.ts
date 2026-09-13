@@ -15,6 +15,12 @@ export interface Doctor {
   availabilityNote: string;
   phone?: string;
   whatsapp?: string;
+  googleBusinessUrl?: string;
+  rating?: {
+    score: number;
+    reviewCount: number;
+    label: string;
+  };
   schedule: {
     weekdays: string[];
     sunday: string[];
@@ -66,6 +72,12 @@ export const clinicData = {
       availabilityNote: "Available for Child Healthcare, Consultation & Vaccination",
       phone: "+919214678687",
       whatsapp: "+919214678687",
+      googleBusinessUrl: "https://share.google/CtLdjRTL6v4aJURMi",
+      rating: {
+        score: 5.0,
+        reviewCount: 48,
+        label: "5.0 ★ Google Rating"
+      },
       schedule: {
         weekdays: [
           "07:00 AM – 08:00 AM",
@@ -107,6 +119,12 @@ export const clinicData = {
       availabilityNote: "Available for Physiotherapy and Rehabilitation care",
       phone: "+919057209819",
       whatsapp: "+919057209819",
+      googleBusinessUrl: "https://share.google/USmUvytjAGkmxe9cr",
+      rating: {
+        score: 5.0,
+        reviewCount: 36,
+        label: "5.0 ★ Google Rating"
+      },
       schedule: {
         weekdays: [
           "09:00 AM – 01:00 PM",

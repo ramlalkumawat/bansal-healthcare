@@ -22,7 +22,9 @@ import {
   ChevronLeft,
   ZoomIn,
   MapPin,
-  Navigation
+  Navigation,
+  Star,
+  ExternalLink
 } from "lucide-react";
 import { Doctor, clinicData } from "@/data/clinic";
 import Navbar from "@/components/Navbar";
@@ -164,9 +166,27 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                 </div>
                 
                 <div className="space-y-3 text-center md:text-left flex-1 pt-2">
-                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[13px] font-bold bg-accent/15 text-accent uppercase tracking-wider">
-                    {doctor.details?.experienceYears} Years Clinical Experience
-                  </span>
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5">
+                    <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[13px] font-bold bg-accent/15 text-accent uppercase tracking-wider">
+                      {doctor.details?.experienceYears} Years Clinical Experience
+                    </span>
+                    {doctor.googleBusinessUrl && (
+                      <a
+                        href={doctor.googleBusinessUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-[12px] font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 shadow-xs transition-colors cursor-pointer group"
+                        title="View Google Reviews & Rating"
+                      >
+                        <div className="flex items-center text-amber-400">
+                          <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                        </div>
+                        <span className="font-extrabold text-amber-950">5.0</span>
+                        <span className="text-amber-800 font-semibold">Google Rating</span>
+                        <ExternalLink className="w-3 h-3 text-amber-700 opacity-60 group-hover:opacity-100" />
+                      </a>
+                    )}
+                  </div>
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">{doctor.name}</h1>
                   <p className="text-base sm:text-xl font-bold text-secondary uppercase tracking-wider">{doctor.title}</p>
                   <p className="text-[15px] sm:text-[17px] font-semibold text-slate-600">{doctor.qualifications}</p>
@@ -212,6 +232,95 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                   {doctor.details?.aboutText}
                 </p>
               </section>
+
+              {/* Google Reviews & Client Rating Section */}
+              {doctor.googleBusinessUrl && (
+                <section className="bg-gradient-to-br from-white via-amber-50/25 to-white border border-amber-200/90 p-6 sm:p-8 rounded-3xl text-left space-y-5 shadow-xs relative overflow-hidden">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-center space-x-3.5">
+                      {/* Google G Logo */}
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-center shadow-xs shrink-0 p-2.5">
+                        <svg className="w-full h-full" viewBox="0 0 24 24">
+                          <path
+                            fill="#4285F4"
+                            d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"
+                          />
+                          <path
+                            fill="#34A853"
+                            d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.35 24 12 24z"
+                          />
+                          <path
+                            fill="#FBBC05"
+                            d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z"
+                          />
+                          <path
+                            fill="#EA4335"
+                            d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="flex items-center space-x-2 flex-wrap gap-1">
+                          <h3 className="text-lg sm:text-xl font-extrabold text-primary">
+                            Google Reviews & Rating
+                          </h3>
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            Verified Google Profile
+                          </span>
+                        </div>
+                        <p className="text-xs text-text-muted font-medium mt-0.5">
+                          Patients rate {doctor.name} on Google My Business
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Overall Score Badge */}
+                    <div className="flex items-center space-x-3 bg-white border border-amber-200 px-4 py-2.5 rounded-2xl shrink-0 shadow-xs">
+                      <span className="text-2xl sm:text-3xl font-black text-amber-950">5.0</span>
+                      <div>
+                        <div className="flex items-center text-amber-400 space-x-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                          ))}
+                        </div>
+                        <span className="text-[10px] font-bold text-amber-800 uppercase tracking-wider block mt-0.5">
+                          ★★★★★ Top Rated
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr className="border-border-light" />
+
+                  {/* Actions for Clients to Rate / Give Feedback */}
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                    <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                      Aapka feedback hamare liye bohot zaroori hai! Doctor ko Google par 5-star rating aur review dekar apna anubhav share karein:
+                    </p>
+
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <a
+                        href={doctor.googleBusinessUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center py-2.5 px-4 rounded-xl bg-accent hover:bg-secondary text-white font-bold text-xs shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                      >
+                        <Star className="w-3.5 h-3.5 mr-1.5 fill-amber-300 text-amber-300" />
+                        <span>Rate on Google</span>
+                      </a>
+                      <a
+                        href={doctor.googleBusinessUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center py-2.5 px-3.5 rounded-xl border border-border-light bg-white text-primary hover:bg-bg-light font-bold text-xs transition-all active:scale-[0.98] cursor-pointer shadow-2xs"
+                      >
+                        <span>View Reviews</span>
+                        <ExternalLink className="w-3 h-3 ml-1 text-slate-400" />
+                      </a>
+                    </div>
+                  </div>
+                </section>
+              )}
 
               {/* Photo Gallery */}
               {(() => {
@@ -424,6 +533,34 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
                   </a>
                 </div>
               </div>
+
+              {/* Google Rating & Review Sidebar Card */}
+              {doctor.googleBusinessUrl && (
+                <div className="bg-white border border-amber-200/80 p-5 rounded-3xl shadow-xs space-y-3 text-left">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2 text-primary font-bold text-sm">
+                      <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      <span>Google Reviews</span>
+                    </div>
+                    <span className="text-xs font-black text-amber-950 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-200">
+                      5.0 ★★★★★
+                    </span>
+                  </div>
+                  <p className="text-xs text-text-muted leading-relaxed font-medium">
+                    Have you visited {doctor.name}? Share your feedback and rate on Google.
+                  </p>
+                  <a
+                    href={doctor.googleBusinessUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-950 font-bold text-xs shadow-2xs transition-all active:scale-[0.98] cursor-pointer"
+                  >
+                    <Star className="w-3.5 h-3.5 mr-1.5 fill-amber-500 text-amber-500" />
+                    <span>Rate & Review on Google</span>
+                    <ExternalLink className="w-3 h-3 ml-1 text-amber-700 opacity-60" />
+                  </a>
+                </div>
+              )}
 
               {/* Clinic Location & Directions Card */}
               <div className="bg-white border border-border-light p-6 rounded-3xl shadow-sm space-y-4">
