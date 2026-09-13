@@ -3,12 +3,23 @@
 import { Phone, MessageSquare } from "lucide-react";
 import { clinicData } from "@/data/clinic";
 
-export default function FloatingSidebarActions() {
+interface FloatingSidebarActionsProps {
+  onOpenCallModal?: () => void;
+}
+
+export default function FloatingSidebarActions({ onOpenCallModal }: FloatingSidebarActionsProps) {
   if (!clinicData.phone) return null;
 
   // Clean the number for WhatsApp link structure (digits only)
   const cleanedPhone = clinicData.whatsapp.replace(/[^0-9]/g, "");
   const whatsappUrl = `https://wa.me/${cleanedPhone}?text=Hello%20Dr%20Bansal's%20Clinic,%20I'd%20like%20to%20inquire%20about%20booking%20an%20appointment.`;
+
+  const handleCallClick = (e: React.MouseEvent) => {
+    if (onOpenCallModal) {
+      e.preventDefault();
+      onOpenCallModal();
+    }
+  };
 
   return (
     <div className="fixed right-6 bottom-24 md:bottom-1/2 md:translate-y-1/2 z-40 hidden sm:flex flex-col space-y-4">
@@ -20,6 +31,7 @@ export default function FloatingSidebarActions() {
         </span>
         <a
           href={`tel:${clinicData.phone}`}
+          onClick={handleCallClick}
           className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary text-white shadow-lg hover:bg-accent hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           aria-label="Call Clinic"
         >

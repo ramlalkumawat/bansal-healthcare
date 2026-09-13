@@ -19,8 +19,8 @@ export default function Footer() {
         {/* Foot Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-white/10">
           
-          {/* Brand Info Column (4 cols) */}
-          <div className="md:col-span-4 space-y-4">
+          {/* Brand Info Column (3 cols) */}
+          <div className="md:col-span-3 space-y-4">
             <button 
               onClick={handleScrollToTop} 
               className="text-lg font-bold tracking-widest text-white uppercase text-left focus:outline-none cursor-pointer"
@@ -60,19 +60,31 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Doctors Column (2 cols) */}
-          <div className="md:col-span-2 space-y-4">
+          {/* Doctors Column (3 cols) */}
+          <div className="md:col-span-3 space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-accent">
-              Our Doctors
+              Our Doctors & Contact
             </h4>
-            <ul className="space-y-2 text-xs font-semibold text-white/75">
-              {clinicData.doctors.map((doc) => (
-                <li key={doc.id}>
-                  <Link href={`/doctor/${doc.id}`} className="hover:text-accent transition-colors">
-                    {doc.name}
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-3.5 text-xs font-semibold text-white/80">
+              {clinicData.doctors.map((doc) => {
+                const phoneNum = doc.phone || clinicData.phone;
+                return (
+                  <li key={doc.id} className="space-y-1">
+                    <Link
+                      href={`/doctor/${doc.id}`}
+                      className="block text-white font-bold hover:text-accent transition-colors"
+                    >
+                      {doc.name}
+                    </Link>
+                    <div className="flex items-center space-x-2 text-emerald-300 text-[11px]">
+                      <Phone className="w-3 h-3 text-accent shrink-0" />
+                      <a href={`tel:${phoneNum}`} className="hover:underline font-semibold">
+                        {phoneNum}
+                      </a>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -113,27 +125,42 @@ export default function Footer() {
 
             <div className="space-y-3 border-t border-white/5 pt-4">
               <h4 className="text-xs font-bold uppercase tracking-wider text-accent">
-                Contact Details
+                Direct Doctor Contacts
               </h4>
-              <ul className="space-y-2 text-xs font-semibold text-white/75">
+              <ul className="space-y-2 text-xs font-semibold text-white/85">
                 <li>
-                  <a
-                    href={`tel:${clinicData.phone}`}
-                    className="inline-flex items-center space-x-2 hover:text-accent transition-colors"
-                  >
-                    <Phone className="w-3.5 h-3.5 text-accent" />
-                    <span>{clinicData.phone}</span>
-                  </a>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-white/70">Dr. Piyush Bansal:</span>
+                    <a
+                      href="tel:+919214678687"
+                      className="inline-flex items-center space-x-1 text-accent hover:underline font-bold"
+                    >
+                      <Phone className="w-3 h-3" />
+                      <span>+91 92146 78687</span>
+                    </a>
+                  </div>
                 </li>
                 <li>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-white/70">Dr. Manisha Bansal:</span>
+                    <a
+                      href="tel:+919057209819"
+                      className="inline-flex items-center space-x-1 text-accent hover:underline font-bold"
+                    >
+                      <Phone className="w-3 h-3" />
+                      <span>+91 90572 09819</span>
+                    </a>
+                  </div>
+                </li>
+                <li className="pt-1">
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 hover:text-accent transition-colors"
+                    className="inline-flex items-center space-x-2 text-emerald-300 hover:text-white transition-colors"
                   >
                     <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>WhatsApp Consultation</span>
+                    <span>WhatsApp Clinic Consultation</span>
                   </a>
                 </li>
               </ul>

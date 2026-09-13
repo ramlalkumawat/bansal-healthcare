@@ -29,7 +29,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingMobileActions from "@/components/FloatingMobileActions";
 import FloatingSidebarActions from "@/components/FloatingSidebarActions";
+import FloatingWhatsAppWidget from "@/components/FloatingWhatsAppWidget";
 import AppointmentModal from "@/components/AppointmentModal";
+import CallDoctorModal from "@/components/CallDoctorModal";
 
 interface DoctorDetailsViewProps {
   doctor: Doctor | undefined;
@@ -55,6 +57,7 @@ const manishaGalleryImages = [
 export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps) {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -114,7 +117,10 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
 
   return (
     <>
-      <Navbar onOpenAppointment={() => setIsModalOpen(true)} />
+      <Navbar
+        onOpenAppointment={() => setIsModalOpen(true)}
+        onOpenCallModal={() => setIsCallModalOpen(true)}
+      />
 
       <main className="flex-grow bg-bg-light pt-28 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -463,16 +469,28 @@ export default function DoctorDetailsView({ doctor, id }: DoctorDetailsViewProps
       <Footer />
 
       {/* Mobile Floating Quick actions */}
-      <FloatingMobileActions onOpenAppointment={() => setIsModalOpen(true)} />
+      <FloatingMobileActions
+        onOpenAppointment={() => setIsModalOpen(true)}
+        onOpenCallModal={() => setIsCallModalOpen(true)}
+      />
+
+      {/* Floating WhatsApp Widget for mobile that scrolls with the website */}
+      <FloatingWhatsAppWidget />
 
       {/* Desktop sidebar quick links */}
-      <FloatingSidebarActions />
+      <FloatingSidebarActions onOpenCallModal={() => setIsCallModalOpen(true)} />
 
       {/* Appointment modal overlay */}
       <AppointmentModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         defaultDoctorId={doctor.id}
+      />
+
+      {/* Call Doctor Chooser Modal */}
+      <CallDoctorModal
+        isOpen={isCallModalOpen}
+        onClose={() => setIsCallModalOpen(false)}
       />
 
       {/* Lightbox Modal */}

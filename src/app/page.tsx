@@ -13,10 +13,13 @@ import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
 import FloatingMobileActions from "@/components/FloatingMobileActions";
 import FloatingSidebarActions from "@/components/FloatingSidebarActions";
+import FloatingWhatsAppWidget from "@/components/FloatingWhatsAppWidget";
 import AppointmentModal from "@/components/AppointmentModal";
+import CallDoctorModal from "@/components/CallDoctorModal";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [defaultDoctorId, setDefaultDoctorId] = useState("");
 
   useEffect(() => {
@@ -45,7 +48,10 @@ export default function Home() {
   return (
     <>
       {/* Sticky Navbar */}
-      <Navbar onOpenAppointment={() => handleOpenAppointment("")} />
+      <Navbar
+        onOpenAppointment={() => handleOpenAppointment("")}
+        onOpenCallModal={() => setIsCallModalOpen(true)}
+      />
 
       {/* Main Content Layout */}
       <main className="flex-grow">
@@ -78,16 +84,28 @@ export default function Home() {
       <Footer />
 
       {/* Sticky Quick Actions Bar for mobile layouts */}
-      <FloatingMobileActions onOpenAppointment={() => handleOpenAppointment("")} />
+      <FloatingMobileActions
+        onOpenAppointment={() => handleOpenAppointment("")}
+        onOpenCallModal={() => setIsCallModalOpen(true)}
+      />
+
+      {/* Floating WhatsApp Widget for mobile that scrolls with the website */}
+      <FloatingWhatsAppWidget />
 
       {/* Sticky Sidebar Actions for desktop layouts */}
-      <FloatingSidebarActions />
+      <FloatingSidebarActions onOpenCallModal={() => setIsCallModalOpen(true)} />
 
       {/* Booking Form Dialog Modal overlay */}
       <AppointmentModal
         isOpen={isModalOpen}
         onClose={handleCloseAppointment}
         defaultDoctorId={defaultDoctorId}
+      />
+
+      {/* Call Doctor Chooser Modal */}
+      <CallDoctorModal
+        isOpen={isCallModalOpen}
+        onClose={() => setIsCallModalOpen(false)}
       />
     </>
   );

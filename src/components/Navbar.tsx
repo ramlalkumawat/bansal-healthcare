@@ -7,16 +7,17 @@ import { clinicData } from "@/data/clinic";
 
 interface NavbarProps {
   onOpenAppointment: () => void;
+  onOpenCallModal?: () => void;
 }
 
-export default function Navbar({ onOpenAppointment }: NavbarProps) {
+export default function Navbar({ onOpenAppointment, onOpenCallModal }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Handle transparent background transitioning to solid on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -25,6 +26,14 @@ export default function Navbar({ onOpenAppointment }: NavbarProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleCallClick = (e: React.MouseEvent) => {
+    if (onOpenCallModal) {
+      e.preventDefault();
+      setIsOpen(false);
+      onOpenCallModal();
+    }
+  };
 
   const navLinks = [
     { name: "Home", href: "/#home" },
@@ -73,7 +82,8 @@ export default function Navbar({ onOpenAppointment }: NavbarProps) {
             {clinicData.phone && (
               <a
                 href={`tel:${clinicData.phone}`}
-                className="inline-flex items-center space-x-2 text-sm font-semibold text-secondary hover:text-accent transition-colors duration-200"
+                onClick={handleCallClick}
+                className="inline-flex items-center space-x-2 text-sm font-semibold text-secondary hover:text-accent transition-colors duration-200 cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call Clinic</span>
@@ -122,7 +132,8 @@ export default function Navbar({ onOpenAppointment }: NavbarProps) {
             {clinicData.phone && (
               <a
                 href={`tel:${clinicData.phone}`}
-                className="flex items-center justify-center space-x-2 py-3 rounded-lg border border-border-light text-secondary font-bold text-sm bg-bg-light active:bg-border-light transition-all"
+                onClick={handleCallClick}
+                className="flex items-center justify-center space-x-2 py-3 rounded-lg border border-border-light text-secondary font-bold text-sm bg-bg-light active:bg-border-light transition-all cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call Clinic</span>
