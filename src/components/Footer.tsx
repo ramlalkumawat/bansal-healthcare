@@ -124,22 +124,10 @@ export default function Footer() {
         </div>
 
         {/* Footer Sub-Info */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div className="space-y-1">
-            <p className="text-[11px] text-white/40">
-              © {new Date().getFullYear()} {clinicData.brandName}. All rights reserved.
-            </p>
-          </div>
-
-          {/* Medical Disclaimer block */}
-          <div className="max-w-xl text-left border-l-2 border-accent pl-4 py-1">
-            <span className="block text-[9px] font-bold uppercase tracking-wider text-accent mb-0.5">
-              Medical Disclaimer
-            </span>
-            <p className="text-[10px] text-white/40 leading-normal">
-              The website provides general clinic information and is not a substitute for professional medical advice, diagnosis or treatment. Always consult a certified medical practitioner regarding health conditions.
-            </p>
-          </div>
+        <div className="pt-8 text-center">
+          <p className="text-xs text-white/40">
+            © {new Date().getFullYear()} {clinicData.brandName}. All rights reserved.
+          </p>
         </div>
 
       </div>
