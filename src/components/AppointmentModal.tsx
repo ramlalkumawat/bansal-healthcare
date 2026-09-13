@@ -355,10 +355,6 @@ export default function AppointmentModal({
                         </>
                       )}
                     </button>
-
-                    <p className="text-[10px] text-text-muted text-center leading-normal">
-                      Form submit karte hi details chuninda doctor ke WhatsApp par automatically bhej di jayengi confirmation ke liye.
-                    </p>
                   </form>
                 </>
               ) : (
